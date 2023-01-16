@@ -10,5 +10,6 @@ editor_options:
 
 # Strona z zajęciami
 ## Zajęcia z programowania w R
+### ROK 2
  +[wizualizacje](wizualizacje.html)
  +[wprowadzenie](wprowadzenie.html)

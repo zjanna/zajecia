@@ -8,4 +8,8 @@ editor_options:
   chunk_output_type: console
 ---
 
-Welcome to my research website.
+# dodanie do index.Rmd
+# Strona z zajęciami
+## Zajęcia z programowania w R
+ +[wizualizacje](wizualizacje.html)
+ +[wprowadzenie](wprowadzenie.html)

@@ -1,4 +1,4 @@
-# Zajęcia
+# zajecia
 
 A [workflowr][] project.
 

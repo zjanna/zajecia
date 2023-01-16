@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Joanna Zyprych-Walczak" />
+
+
+<title>Zajęcia z R</title>
+
+<script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<link rel="icon" href="https://github.com/workflowr/workflowr-assets/raw/main/img/reproducible.png">
+<!-- Add a small amount of space between sections. -->
+<style type="text/css">
+div.section {
+  padding-top: 12px;
+}
+</style>
+
+
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Zajęcia</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="license.html">License</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Zajęcia z R</h1>
+<h3 class="subtitle">Wprowadzenie do R</h3>
+<h4 class="author">Joanna Zyprych-Walczak</h4>
+<h4 class="date">20 Styczeń 2023</h4>
+
+</div>
+
+
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
+<span class="glyphicon glyphicon-list" aria-hidden="true"></span>
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span>
+</button>
+</p>
+<div id="workflowr-report" class="collapse">
+<ul class="nav nav-tabs">
+<li class="active">
+<a data-toggle="tab" href="#summary">Summary</a>
+</li>
+<li>
+<a data-toggle="tab" href="#checks"> Checks <span
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
+</li>
+<li>
+<a data-toggle="tab" href="#versions">Past versions</a>
+</li>
+</ul>
+<div class="tab-content">
+<div id="summary" class="tab-pane fade in active">
+<p>
+<strong>Last updated:</strong> 2023-01-16
+</p>
+<p>
+<strong>Checks:</strong> <span
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> 1
+</p>
+<p>
+<strong>Knit directory:</strong> <code>prezentacja_2023/</code> <span
+class="glyphicon glyphicon-question-sign" aria-hidden="true"
+title="This is the local directory in which the code in this file was executed.">
+</span>
+</p>
+<p>
+This reproducible <a href="https://rmarkdown.rstudio.com">R Markdown</a>
+analysis was created with <a
+  href="https://github.com/workflowr/workflowr">workflowr</a> (version
+1.7.0). The <em>Checks</em> tab describes the reproducibility checks
+that were applied when the results were created. The <em>Past
+versions</em> tab lists the development history.
+</p>
+<hr>
+</div>
+<div id="checks" class="tab-pane fade">
+<div id="workflowr-checks" class="panel-group">
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
+</p>
+</div>
+<div id="strongRMarkdownfilestronguncommittedchanges"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20230116code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20230116)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20230116code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20230116)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrong3d7cd43">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Repository version:</strong> 3d7cd43
+</a>
+</p>
+</div>
+<div id="strongRepositoryversionstrong3d7cd43"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>
+Great! You are using Git for version control. Tracking code development
+and connecting the code version to the results is critical for
+reproducibility.
+</p>
+<p>
+The results in this page were generated with repository version 3d7cd43.
+See the <em>Past versions</em> tab to see a history of the changes made
+to the R Markdown and HTML files.
+</p>
+<p>
+Note that you need to be careful to ensure that all relevant files for
+the analysis have been committed to Git prior to generating the results
+(you can use <code>wflow_publish</code> or
+<code>wflow_git_commit</code>). workflowr only checks the R Markdown
+file, but you know if there are other scripts or data files that it
+depends on. Below is the status of the Git repository when the results
+were generated:
+</p>
+<pre><code>
+Ignored files:
+    Ignored:    .DS_Store
+    Ignored:    .Rhistory
+
+Untracked files:
+    Untracked:  analysis/wizualizacje.Rmd
+    Untracked:  analysis/wprowadzenie.Rmd
+    Untracked:  data/studenci.xlsx
+    Untracked:  kod.R
+    Untracked:  prezentacja_joanna.key
+    Untracked:  prezentacje/
+    Untracked:  zdjecia do prezentacji/
+
+Unstaged changes:
+    Deleted:    Zajecia_R/.Rprofile
+    Deleted:    Zajecia_R/.gitattributes
+    Deleted:    Zajecia_R/.gitignore
+    Deleted:    Zajecia_R/README.md
+    Deleted:    Zajecia_R/Zajecia_R.Rproj
+    Deleted:    Zajecia_R/_workflowr.yml
+    Deleted:    Zajecia_R/analysis/_site.yml
+    Deleted:    Zajecia_R/analysis/about.Rmd
+    Deleted:    Zajecia_R/analysis/index.Rmd
+    Deleted:    Zajecia_R/analysis/license.Rmd
+    Deleted:    Zajecia_R/code/README.md
+    Deleted:    Zajecia_R/data/README.md
+    Deleted:    Zajecia_R/docs/.nojekyll
+    Deleted:    Zajecia_R/output/README.md
+    Deleted:    zajecia/.Rprofile
+    Deleted:    zajecia/.gitattributes
+    Deleted:    zajecia/.gitignore
+    Deleted:    zajecia/README.md
+    Deleted:    zajecia/_workflowr.yml
+    Deleted:    zajecia/analysis/_site.yml
+    Deleted:    zajecia/analysis/about.Rmd
+    Deleted:    zajecia/analysis/index.Rmd
+    Deleted:    zajecia/analysis/license.Rmd
+    Deleted:    zajecia/analysis/wizualizacje.Rmd
+    Deleted:    zajecia/analysis/wprowadzenie.Rmd
+    Deleted:    zajecia/code/README.md
+    Deleted:    zajecia/data/README.md
+    Deleted:    zajecia/data/studenci.xlsx
+    Deleted:    zajecia/docs/.nojekyll
+    Deleted:    zajecia/docs/about.html
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-1-1.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-1-2.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-1-3.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-1-4.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-2-1.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-2-2.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-2-3.png
+    Deleted:    zajecia/docs/figure/wizualizacje.Rmd/unnamed-chunk-2-4.png
+    Deleted:    zajecia/docs/figure/wprowadzenie.Rmd/unnamed-chunk-1-1.png
+    Deleted:    zajecia/docs/figure/wprowadzenie.Rmd/unnamed-chunk-7-1.png
+    Deleted:    zajecia/docs/figure/wprowadzenie.Rmd/unnamed-chunk-7-2.png
+    Deleted:    zajecia/docs/figure/wprowadzenie.Rmd/unnamed-chunk-7-3.png
+    Deleted:    zajecia/docs/index.html
+    Deleted:    zajecia/docs/license.html
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap-theme.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap-theme.css.map
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap-theme.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap.css.map
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/bootstrap.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/cerulean.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/cosmo.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/darkly.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/flatly.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/Lato.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/LatoBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/LatoItalic.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/NewsCycle.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/NewsCycleBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSans.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSansBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSansBoldItalic.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSansItalic.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSansLight.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/OpenSansLightItalic.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/Raleway.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/RalewayBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/Roboto.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/RobotoBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/RobotoLight.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/RobotoMedium.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/SourceSansPro.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/SourceSansProBold.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/SourceSansProItalic.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/SourceSansProLight.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/fonts/Ubuntu.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/journal.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/lumen.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/paper.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/readable.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/sandstone.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/simplex.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/spacelab.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/united.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/css/yeti.min.css
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.eot
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.svg
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.ttf
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/fonts/glyphicons-halflings-regular.woff2
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/js/bootstrap.js
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/js/bootstrap.min.js
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/js/npm.js
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/shim/html5shiv.min.js
+    Deleted:    zajecia/docs/site_libs/bootstrap-3.3.5/shim/respond.min.js
+    Deleted:    zajecia/docs/site_libs/header-attrs-2.18/header-attrs.js
+    Deleted:    zajecia/docs/site_libs/highlightjs-9.12.0/default.css
+    Deleted:    zajecia/docs/site_libs/highlightjs-9.12.0/highlight.js
+    Deleted:    zajecia/docs/site_libs/highlightjs-9.12.0/textmate.css
+    Deleted:    zajecia/docs/site_libs/jquery-3.6.0/jquery-3.6.0.js
+    Deleted:    zajecia/docs/site_libs/jquery-3.6.0/jquery-3.6.0.min.js
+    Deleted:    zajecia/docs/site_libs/jquery-3.6.0/jquery-3.6.0.min.map
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/README
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_444444_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_555555_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_777620_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_777777_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_cc0000_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/images/ui-icons_ffffff_256x240.png
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/index.html
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.css
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.js
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.min.css
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.min.js
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.structure.css
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.structure.min.css
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.theme.css
+    Deleted:    zajecia/docs/site_libs/jqueryui-1.11.4/jquery-ui.theme.min.css
+    Deleted:    zajecia/docs/site_libs/navigation-1.1/codefolding-lua.css
+    Deleted:    zajecia/docs/site_libs/navigation-1.1/codefolding.js
+    Deleted:    zajecia/docs/site_libs/navigation-1.1/sourceembed.js
+    Deleted:    zajecia/docs/site_libs/navigation-1.1/tabsets.js
+    Deleted:    zajecia/docs/site_libs/tocify-1.9.1/jquery.tocify.css
+    Deleted:    zajecia/docs/site_libs/tocify-1.9.1/jquery.tocify.js
+    Deleted:    zajecia/docs/wizualizacje.html
+    Deleted:    zajecia/docs/wprowadzenie.html
+    Deleted:    zajecia/output/README.md
+    Deleted:    zajecia/zajecia.Rproj
+
+</code></pre>
+<p>
+Note that any generated files, e.g. HTML, png, CSS, etc., are not
+included in this status report because it is ok for generated content to
+have uncommitted changes.
+</p>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</div>
+<div id="versions" class="tab-pane fade">
+<p>
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
+</p>
+<hr>
+</div>
+</div>
+</div>
+<p><strong>Pierwsze uruchomienie - ćwiczenia</strong></p>
+<ol style="list-style-type: decimal">
+<li>Zainstaluj pakiet ‘aplpack’, dowiedz się czegoś o funkcji ‘faces’ i
+narysuj bazując na tych informacjach zestaw twarzy z tematyką świąt
+Bożego Narodzenia.</li>
+<li>Znajdź, jakie funkcje istnieją w R, które powiązane są ze słowem
+kluczowym ‘ test’</li>
+<li>Zainstaluj pakiet ‘effects’. Sprawdź czego dotyczą dane
+TitanicSurvival.</li>
+</ol>
+<p><strong>Pierwsze uruchomienie - odpowiedzi</strong></p>
+<pre class="r"><code>set.seed(123)
+# zadanie 1
+library(&quot;aplpack&quot;)
+help(faces)
+faces(1, 1, face.type = 2)</code></pre>
+<pre><code>&gt; effect of variables:
+&gt;  modified item       Var   
+&gt;  &quot;height of face   &quot; &quot;Var1&quot;
+&gt;  &quot;width of face    &quot; &quot;Var1&quot;
+&gt;  &quot;structure of face&quot; &quot;Var1&quot;
+&gt;  &quot;height of mouth  &quot; &quot;Var1&quot;
+&gt;  &quot;width of mouth   &quot; &quot;Var1&quot;
+&gt;  &quot;smiling          &quot; &quot;Var1&quot;
+&gt;  &quot;height of eyes   &quot; &quot;Var1&quot;
+&gt;  &quot;width of eyes    &quot; &quot;Var1&quot;
+&gt;  &quot;height of hair   &quot; &quot;Var1&quot;
+&gt;  &quot;width of hair   &quot;  &quot;Var1&quot;
+&gt;  &quot;style of hair   &quot;  &quot;Var1&quot;
+&gt;  &quot;height of nose  &quot;  &quot;Var1&quot;
+&gt;  &quot;width of nose   &quot;  &quot;Var1&quot;
+&gt;  &quot;width of ear    &quot;  &quot;Var1&quot;
+&gt;  &quot;height of ear   &quot;  &quot;Var1&quot;</code></pre>
+<pre class="r"><code># zadanie 2
+apropos(&quot;test&quot;)</code></pre>
+<pre><code>&gt;  [1] &quot;.valueClassTest&quot;      &quot;ansari.test&quot;          &quot;bartlett.test&quot;       
+&gt;  [4] &quot;binom.test&quot;           &quot;Box.test&quot;             &quot;chisq.test&quot;          
+&gt;  [7] &quot;cor.test&quot;             &quot;file_test&quot;            &quot;fisher.test&quot;         
+&gt; [10] &quot;fligner.test&quot;         &quot;friedman.test&quot;        &quot;kruskal.test&quot;        
+&gt; [13] &quot;ks.test&quot;              &quot;mantelhaen.test&quot;      &quot;mauchly.test&quot;        
+&gt; [16] &quot;mcnemar.test&quot;         &quot;mood.test&quot;            &quot;oneway.test&quot;         
+&gt; [19] &quot;pairwise.prop.test&quot;   &quot;pairwise.t.test&quot;      &quot;pairwise.wilcox.test&quot;
+&gt; [22] &quot;poisson.test&quot;         &quot;power.anova.test&quot;     &quot;power.prop.test&quot;     
+&gt; [25] &quot;power.t.test&quot;         &quot;PP.test&quot;              &quot;prop.test&quot;           
+&gt; [28] &quot;prop.trend.test&quot;      &quot;quade.test&quot;           &quot;shapiro.test&quot;        
+&gt; [31] &quot;t.test&quot;               &quot;testInheritedMethods&quot; &quot;testVirtual&quot;         
+&gt; [34] &quot;var.test&quot;             &quot;wilcox.test&quot;</code></pre>
+<pre class="r"><code># zadanie 3
+library(&quot;effects&quot;)</code></pre>
+<pre><code>&gt; Ładowanie wymaganego pakietu: carData</code></pre>
+<pre><code>&gt; lattice theme set by effectsTheme()
+&gt; See ?effectsTheme for details.</code></pre>
+<p><img src="figure/wprowadzenie.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>data(TitanicSurvival)
+help(TitanicSurvival)</code></pre>
+<p><strong>Wektory - ćwiczenia</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Wprowadź dowolne wektory x,y,z. Wykonaj następujące operacje na
+danych x,y,z:</p>
+<p>y-z, x+y, x/2, ln(x) – cos y</p></li>
+<li><p>Stwórz dane, które będą zawierały 8 jedynek i zapisz je pod
+zmienną cc, a następnie utwórz dane zawierające 199 zer i zapisz pod
+zmienną d.</p></li>
+<li><p>Oblicz:</p>
+<p><span class="math inline">\(10^2+11^2+...+20^2\)</span>,</p>
+<p><span
+class="math inline">\(\sqrt{log(1)}+\sqrt{log(10)}+...+\sqrt{log(1000)}\)</span></p></li>
+<li><p>Użyj funkcji rep żeby utworzyć następujące dane</p>
+<ul>
+<li>1 1 1 1 1 1 1 1</li>
+<li>1 2 1 2 1 2 1 2 1 2 1 2</li>
+<li>0 0 0 0 0 0 0 0 1 1 1 1</li>
+<li>4 3 3 2 2 2 1 1 1 1</li>
+<li>23 23 23 32 42 42</li>
+<li>„A” „B” „A” „B” „A” „B”</li>
+</ul></li>
+</ol>
+<p><strong>Wektory - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+x&lt;-2:7
+y&lt;-c(rep(2,3),rep(3,3))
+z&lt;-c(x[1:3],y[c(3,4,5)])
+y-z</code></pre>
+<pre><code>&gt; [1]  0 -1 -2  1  0  0</code></pre>
+<pre class="r"><code>x+y</code></pre>
+<pre><code>&gt; [1]  4  5  6  8  9 10</code></pre>
+<pre class="r"><code>x/2</code></pre>
+<pre><code>&gt; [1] 1.0 1.5 2.0 2.5 3.0 3.5</code></pre>
+<pre class="r"><code>log(x, base = exp(1))-cos(y)</code></pre>
+<pre><code>&gt; [1] 1.109294 1.514759 1.802441 2.599430 2.781752 2.935903</code></pre>
+<pre class="r"><code># zadanie 2
+cc&lt;-rep(1,8)
+cc</code></pre>
+<pre><code>&gt; [1] 1 1 1 1 1 1 1 1</code></pre>
+<pre class="r"><code>d&lt;-rep(0,199)
+d</code></pre>
+<pre><code>&gt;   [1] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&gt;  [38] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&gt;  [75] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&gt; [112] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&gt; [149] 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+&gt; [186] 0 0 0 0 0 0 0 0 0 0 0 0 0 0</code></pre>
+<pre class="r"><code># zadanie 3
+sum((10:20)^2)</code></pre>
+<pre><code>&gt; [1] 2585</code></pre>
+<pre class="r"><code>sum(sqrt(log(10^(0:3))))</code></pre>
+<pre><code>&gt; [1] 6.291654</code></pre>
+<pre class="r"><code># zadanie 4
+rep(1,8)</code></pre>
+<pre><code>&gt; [1] 1 1 1 1 1 1 1 1</code></pre>
+<pre class="r"><code>rep(c(1,2),6)</code></pre>
+<pre><code>&gt;  [1] 1 2 1 2 1 2 1 2 1 2 1 2</code></pre>
+<pre class="r"><code>c(rep(0,8),rep(1,4))</code></pre>
+<pre><code>&gt;  [1] 0 0 0 0 0 0 0 0 1 1 1 1</code></pre>
+<pre class="r"><code>rep(4:1,1:4)</code></pre>
+<pre><code>&gt;  [1] 4 3 3 2 2 2 1 1 1 1</code></pre>
+<pre class="r"><code>rep(c(23, 32, 42), c(3, 1, 2)) </code></pre>
+<pre><code>&gt; [1] 23 23 23 32 42 42</code></pre>
+<pre class="r"><code>rep(c(&quot;A&quot;,&quot;B&quot;),3)</code></pre>
+<pre><code>&gt; [1] &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot; &quot;A&quot; &quot;B&quot;</code></pre>
+<p><strong>Macierze - ćwiczenia:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Zadeklaruj poniższe macierze: <span class="math display">\[A =
+\begin{pmatrix}
+1 &amp;  2 &amp; -1&amp;  0 \\
+3 &amp; -2 &amp; 4 &amp; 5 \\
+2 &amp; 6 &amp; 5 &amp; -3 \\
+0 &amp; 1&amp;  5&amp;  -4 \\
+\end{pmatrix}
+\]</span> <span class="math display">\[
+B =
+\begin{pmatrix}
+3 &amp; 6 \\
+4 &amp; 0 \\
+2 &amp; -1 \\
+1 &amp; 1 \\
+\end{pmatrix}
+\]</span> Oblicz wyznacznik macierzy <span
+class="math inline">\(\textbf{A}\)</span>, znajdź iloczyn <span
+class="math inline">\(\textbf{AB}\)</span>, znajdź macierz transponowaną
+<span class="math inline">\(\mathbf{B}^T\)</span>.</p></li>
+<li><p>Dana jest macierz : <span class="math display">\[
+A =
+\begin{pmatrix}
+2&amp;  3\\
+1&amp;  4\\
+\end{pmatrix}
+\]</span> Oblicz <span
+class="math inline">\(\mathbf{A}^2-6\mathbf{A}+4\mathbf{I}\)</span>,
+gdzie <span class="math inline">\(\mathbf{I}\)</span> jest macierzą
+jednostkową postaci: <span class="math display">\[
+I =
+\begin{pmatrix}
+1&amp;  0 \\
+0&amp;  1 \\
+\end{pmatrix}
+\]</span></p></li>
+<li><p>Mając: <span class="math display">\[
+A =
+\begin{pmatrix}
+1 &amp; -1 &amp;5 \\
+2&amp; 1&amp; -4 \\
+\end{pmatrix},
+\]</span> <span class="math display">\[
+B =
+\begin{pmatrix}
+-2 &amp;-1&amp; 2 \\
+3&amp; 1&amp; 4 \\
+\end{pmatrix},
+\]</span> <span class="math display">\[
+C =
+\begin{pmatrix}
+0 &amp;-3&amp; 9 \\
+3 &amp;18 &amp;-6 \\
+\end{pmatrix}
+\]</span> Oblicz:</p>
+<ul>
+<li><span class="math inline">\(\mathbf{A}+\mathbf{B}\)</span>,</li>
+<li><span class="math inline">\(\mathbf{A}-\mathbf{B}\)</span>,</li>
+<li><span class="math inline">\(2\mathbf{A}+3\mathbf{B}\)</span>,</li>
+<li><span
+class="math inline">\(\mathbf{A}^T-4\mathbf{B}^T\)</span>,</li>
+</ul></li>
+<li><p>Zadeklaruj na 3 sposoby: <span class="math display">\[
+A =
+\begin{pmatrix}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6 \\
+7 &amp; 8 &amp; 9 \\
+\end{pmatrix}.
+\]</span> Następnie, korzystając z funkcji R:</p>
+<ul>
+<li>Wyznacz liczbę wierszy i kolumn macierzy <span
+class="math inline">\(\textbf{A}\)</span>.</li>
+<li>Wyznacz sumę wszystkich elementów macierzy <span
+class="math inline">\(\textbf{A}\)</span>.</li>
+<li>Wyznacz sumy wszytkich elementów w poszczególnych kolumnach macierzy
+<span class="math inline">\(\textbf{A}\)</span>.</li>
+<li>Wyznacz sumy wszytkich elementów w poszczególnych wierszach macierzy
+<span class="math inline">\(\textbf{A}\)</span>.</li>
+<li>Oblicz <span class="math inline">\(A_{11}\)</span> + <span
+class="math inline">\(A_{32}\)</span>.</li>
+<li>Wyświetl zawartość drugiej kolumny.</li>
+<li>Wyświetl zawartość pierwszego wiersza.</li>
+</ul></li>
+</ol>
+<p><strong>Macierze - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+A&lt;-matrix(c(1,2,-1,0,3,-2,4,5,2,6,5,-3,0,1,5,-4),4,4,byrow=T)
+A</code></pre>
+<pre><code>&gt;      [,1] [,2] [,3] [,4]
+&gt; [1,]    1    2   -1    0
+&gt; [2,]    3   -2    4    5
+&gt; [3,]    2    6    5   -3
+&gt; [4,]    0    1    5   -4</code></pre>
+<pre class="r"><code>B&lt;-matrix(c(3,4,2,1,6,0,-1,1),4,2)
+B</code></pre>
+<pre><code>&gt;      [,1] [,2]
+&gt; [1,]    3    6
+&gt; [2,]    4    0
+&gt; [3,]    2   -1
+&gt; [4,]    1    1</code></pre>
+<pre class="r"><code>det(A)</code></pre>
+<pre><code>&gt; [1] 154</code></pre>
+<pre class="r"><code>A%*%B</code></pre>
+<pre><code>&gt;      [,1] [,2]
+&gt; [1,]    9    7
+&gt; [2,]   14   19
+&gt; [3,]   37    4
+&gt; [4,]   10   -9</code></pre>
+<pre class="r"><code>t(B)</code></pre>
+<pre><code>&gt;      [,1] [,2] [,3] [,4]
+&gt; [1,]    3    4    2    1
+&gt; [2,]    6    0   -1    1</code></pre>
+<pre class="r"><code># zadanie 2
+A&lt;-matrix(c(2,3,1,4),2,2,byrow=T)
+A%*%A-6*A+4*diag(2)</code></pre>
+<pre><code>&gt;      [,1] [,2]
+&gt; [1,]   -1    0
+&gt; [2,]    0   -1</code></pre>
+<pre class="r"><code># zadanie 3
+A&lt;-matrix(c(1,-1,5,2,1,-4),2,3,byrow=T)
+B&lt;-matrix(c(-2,-1,2,3,1,4),2,3,byrow=T)
+C&lt;-matrix(c(0,3,-3,18,9,-6),2,3)
+A+B</code></pre>
+<pre><code>&gt;      [,1] [,2] [,3]
+&gt; [1,]   -1   -2    7
+&gt; [2,]    5    2    0</code></pre>
+<pre class="r"><code>A-B</code></pre>
+<pre><code>&gt;      [,1] [,2] [,3]
+&gt; [1,]    3    0    3
+&gt; [2,]   -1    0   -8</code></pre>
+<pre class="r"><code>A+3*B</code></pre>
+<pre><code>&gt;      [,1] [,2] [,3]
+&gt; [1,]   -5   -4   11
+&gt; [2,]   11    4    8</code></pre>
+<pre class="r"><code>t(A)-4*t(B)</code></pre>
+<pre><code>&gt;      [,1] [,2]
+&gt; [1,]    9  -10
+&gt; [2,]    3   -3
+&gt; [3,]   -3  -20</code></pre>
+<pre class="r"><code># zadanie 4
+A&lt;-matrix(1:9,3,3,byrow=T)
+nrow(A)</code></pre>
+<pre><code>&gt; [1] 3</code></pre>
+<pre class="r"><code>ncol(A)</code></pre>
+<pre><code>&gt; [1] 3</code></pre>
+<pre class="r"><code>sum(A)</code></pre>
+<pre><code>&gt; [1] 45</code></pre>
+<pre class="r"><code>colSums(A)</code></pre>
+<pre><code>&gt; [1] 12 15 18</code></pre>
+<pre class="r"><code>rowSums(A)</code></pre>
+<pre><code>&gt; [1]  6 15 24</code></pre>
+<pre class="r"><code>A[1,1]+A[3,2]</code></pre>
+<pre><code>&gt; [1] 9</code></pre>
+<pre class="r"><code>A[,2]</code></pre>
+<pre><code>&gt; [1] 2 5 8</code></pre>
+<pre class="r"><code>A[1,]</code></pre>
+<pre><code>&gt; [1] 1 2 3</code></pre>
+<p><strong>Wczytywanie danych - ćwiczenia:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Ustaw ściężkę na “~/Documents/szkolenie_R/” i załaduj pierwszy
+arkusz z pliku studenci.xlsx.</p></li>
+<li><p>Załaduj pierwszy arkusz z pliku koty_ptaki.xls ze strony ‘<a
+href="http://biecek.pl/MOOC/dane/"
+class="uri">http://biecek.pl/MOOC/dane/</a>’.</p></li>
+<li><p>Załaduj plik koty_ptaki.csv ze strony ‘<a
+href="http://biecek.pl/MOOC/dane/"
+class="uri">http://biecek.pl/MOOC/dane/</a>’ (separatorem jest tutaj
+“;”).</p></li>
+<li><p>Załaduj obiekt koty_ptaki.rda ze strony ‘<a
+href="http://biecek.pl/MOOC/dane/"
+class="uri">http://biecek.pl/MOOC/dane/</a>’.</p></li>
+</ol>
+<p><strong>Wczytywanie danych - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+library(openxlsx) # pakiet do wczytywania danych z Excela
+studenci&lt;-read.xlsx(&#39;data/studenci.xlsx&#39;,
+                       sheet=&#39;Arkusz1&#39;,
+                       colNames  = T)
+
+# zadanie 2
+read.table(file = &#39;http://biecek.pl/MOOC/dane/koty_ptaki.csv&#39;, 
+           header = TRUE, sep = &#39;;&#39;, dec = &#39;,&#39;)</code></pre>
+<pre><code>&gt;           gatunek   waga dlugosc predkosc  habitat zywotnosc druzyna
+&gt; 1          Tygrys 300.00     2.5       60     Azja        25     Kot
+&gt; 2             Lew 200.00     2.0       80   Afryka        29     Kot
+&gt; 3          Jaguar 100.00     1.7       90  Ameryka        15     Kot
+&gt; 4            Puma  80.00     1.7       70  Ameryka        13     Kot
+&gt; 5         Leopard  70.00     1.4       85     Azja        21     Kot
+&gt; 6          Gepard  60.00     1.4      115   Afryka        12     Kot
+&gt; 7           Irbis  50.00     1.3       65     Azja        18     Kot
+&gt; 8          Jerzyk   0.05     0.2      170 Euroazja        20    Ptak
+&gt; 9           Strus 150.00     2.5       70   Afryka        45    Ptak
+&gt; 10  Orzel przedni   5.00     0.9      160   Polnoc        20    Ptak
+&gt; 11 Sokol wedrowny   0.70     0.5      110   Polnoc        15    Ptak
+&gt; 12 Sokol norweski   2.00     0.7      100   Polnoc        20    Ptak
+&gt; 13       Albatros   4.00     0.8      120 Poludnie        50    Ptak</code></pre>
+<pre class="r"><code># zadanie 3
+library(gdata) # pakiet do czytania plików Excela z internetu</code></pre>
+<pre><code>&gt; gdata: read.xls support for &#39;XLS&#39; (Excel 97-2004) files ENABLED.</code></pre>
+<pre><code>&gt; </code></pre>
+<pre><code>&gt; gdata: read.xls support for &#39;XLSX&#39; (Excel 2007+) files ENABLED.</code></pre>
+<pre><code>&gt; 
+&gt; Dołączanie pakietu: &#39;gdata&#39;</code></pre>
+<pre><code>&gt; Następujący obiekt został zakryty z &#39;package:stats&#39;:
+&gt; 
+&gt;     nobs</code></pre>
+<pre><code>&gt; Następujący obiekt został zakryty z &#39;package:utils&#39;:
+&gt; 
+&gt;     object.size</code></pre>
+<pre><code>&gt; Następujący obiekt został zakryty z &#39;package:base&#39;:
+&gt; 
+&gt;     startsWith</code></pre>
+<pre class="r"><code>cats_birds &lt;- read.xls(&#39;http://biecek.pl/MOOC/dane/koty_ptaki.xls&#39;, 
+                       sheet = 1)
+
+# zadanie 4
+load(url(&#39;http://biecek.pl/MOOC/dane/koty_ptaki.rda&#39;))</code></pre>
+<p><strong>Ramki danych - ćwiczenia:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Załaduj dane TitanicSurvival z pakietu effects. Podaj wymiary
+danych, ile jest wierszy i kolumn, jakie są nazwy zmiennych, jakie są
+nazwy 6 pierwszych wierszy. Spróbuj odpowiedzieć na następujące pytania:
+<ul>
+<li>Ile jest osób w tym zestawie danych?</li>
+<li>Ile jest w nich kobiet, a ile mężczyzn?</li>
+<li>Ile kobiet przeżyło? Ilu mężczyzn przeżyło?</li>
+<li>Ile kobiet z pierwszej klasy miało powyżej 30 lat?</li>
+<li>Ilu dzieci poniżej 5 lat przeżyło?</li>
+<li>Jaka jest proporcja (w %) pomiędzy mężczyznami, a kobietami w 3
+klasie?</li>
+<li>Jaka jest proporcja pomiędzy przeżytymi kobietami, a
+mężczyznami?</li>
+</ul></li>
+<li>Na podstawie danych z pliku “studenci.xlsx” odpowiedz na następujące
+pytania przy użyciu pakietu dplyr oraz bez niego:
+<ul>
+<li>Ile jest kobiet, a ilu mężczyzn studiuje Leśnictwo?</li>
+<li>Jaka jest średnia stypendium naukowego dla kobiet, a jaka dla
+mężczyzn?</li>
+<li>Ile kobiet studiuje Rolnictwo?</li>
+<li>Ile studentów Leśnictwa nie ma stypendium naukowego?</li>
+</ul></li>
+<li>Korzystając obiektu cats_birds spróbuj wykonać następujące
+polecenia:
+<ul>
+<li>Wyświetl zawartość zmiennej “gatunki”.</li>
+<li>Wyświetl drugi wiersz danych.</li>
+<li>Usuń drugi wiersz danych.</li>
+<li>Wyświetl drugi, trzeci i czwarty wiersz dla czterech pierwszych
+kolumn.</li>
+<li>Znajdź podzbiór zwierząt, które osiągają prędkość większą niż 100
+km/h.</li>
+<li>Przesortuj wektor prędkości zwierząt.</li>
+<li>Uporządkuj dane względem predkości.</li>
+</ul></li>
+</ol>
+<p><strong>Ramki danych - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+library(&#39;effects&#39;)
+data(&quot;TitanicSurvival&quot;)
+dim(TitanicSurvival)</code></pre>
+<pre><code>&gt; [1] 1309    4</code></pre>
+<pre class="r"><code>nrow(TitanicSurvival)</code></pre>
+<pre><code>&gt; [1] 1309</code></pre>
+<pre class="r"><code>ncol(TitanicSurvival)</code></pre>
+<pre><code>&gt; [1] 4</code></pre>
+<pre class="r"><code>names(TitanicSurvival)</code></pre>
+<pre><code>&gt; [1] &quot;survived&quot;       &quot;sex&quot;            &quot;age&quot;            &quot;passengerClass&quot;</code></pre>
+<pre class="r"><code>colnames(TitanicSurvival) # alternatywny sposób podania nazw zmiennych</code></pre>
+<pre><code>&gt; [1] &quot;survived&quot;       &quot;sex&quot;            &quot;age&quot;            &quot;passengerClass&quot;</code></pre>
+<pre class="r"><code>head(rownames(TitanicSurvival))</code></pre>
+<pre><code>&gt; [1] &quot;Allen, Miss. Elisabeth Walton&quot;   &quot;Allison, Master. Hudson Trevor&quot; 
+&gt; [3] &quot;Allison, Miss. Helen Loraine&quot;    &quot;Allison, Mr. Hudson Joshua Crei&quot;
+&gt; [5] &quot;Allison, Mrs. Hudson J C (Bessi&quot; &quot;Anderson, Mr. Harry&quot;</code></pre>
+<pre class="r"><code># Ile jest osób w tym zestawie danych? 
+str(TitanicSurvival)</code></pre>
+<pre><code>&gt; &#39;data.frame&#39;: 1309 obs. of  4 variables:
+&gt;  $ survived      : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 2 1 1 1 2 2 1 2 1 ...
+&gt;  $ sex           : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 2 1 2 1 2 1 2 1 2 ...
+&gt;  $ age           : num  29 0.917 2 30 25 ...
+&gt;  $ passengerClass: Factor w/ 3 levels &quot;1st&quot;,&quot;2nd&quot;,&quot;3rd&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<pre class="r"><code>nrow(TitanicSurvival)</code></pre>
+<pre><code>&gt; [1] 1309</code></pre>
+<pre class="r"><code># Ile jest w nich kobiet, a ile mężczyzn?
+str(subset(TitanicSurvival,TitanicSurvival$sex == &#39;female&#39;))</code></pre>
+<pre><code>&gt; &#39;data.frame&#39;: 466 obs. of  4 variables:
+&gt;  $ survived      : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 1 1 2 2 2 2 2 2 2 ...
+&gt;  $ sex           : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+&gt;  $ age           : num  29 2 25 63 53 18 24 26 50 32 ...
+&gt;  $ passengerClass: Factor w/ 3 levels &quot;1st&quot;,&quot;2nd&quot;,&quot;3rd&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<pre class="r"><code>str(subset(TitanicSurvival,TitanicSurvival$sex == &#39;male&#39;))</code></pre>
+<pre><code>&gt; &#39;data.frame&#39;: 843 obs. of  4 variables:
+&gt;  $ survived      : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 1 2 1 1 1 2 1 1 1 ...
+&gt;  $ sex           : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 2 2 2 2 2 2 2 2 2 ...
+&gt;  $ age           : num  0.917 30 48 39 71 ...
+&gt;  $ passengerClass: Factor w/ 3 levels &quot;1st&quot;,&quot;2nd&quot;,&quot;3rd&quot;: 1 1 1 1 1 1 1 1 1 1 ...</code></pre>
+<pre class="r"><code>length(which(TitanicSurvival$sex == &#39;female&#39;))</code></pre>
+<pre><code>&gt; [1] 466</code></pre>
+<pre class="r"><code>length(which(TitanicSurvival$sex == &#39;male&#39;))</code></pre>
+<pre><code>&gt; [1] 843</code></pre>
+<pre class="r"><code># Ile kobiet przeżyło? Ilu mężczyzn przeżyło?
+length(which(TitanicSurvival$sex == &#39;female&#39; &amp; 
+             TitanicSurvival$survived == &quot;yes&quot;))</code></pre>
+<pre><code>&gt; [1] 339</code></pre>
+<pre class="r"><code>length(which(TitanicSurvival$sex == &#39;male&#39; &amp; 
+             TitanicSurvival$survived == &quot;yes&quot;))</code></pre>
+<pre><code>&gt; [1] 161</code></pre>
+<pre class="r"><code># Ile kobiet z pierwszej klasy miało powyżej 30 lat?
+length(which(TitanicSurvival$sex == &#39;female&#39; &amp; 
+             TitanicSurvival$age &gt; 30 &amp; 
+             TitanicSurvival$passengerClass == &quot;1st&quot;))</code></pre>
+<pre><code>&gt; [1] 84</code></pre>
+<pre class="r"><code># Ilu dzieci poniżej 5 lat przeżyło?
+str(subset(TitanicSurvival,TitanicSurvival$age &lt; 5))</code></pre>
+<pre><code>&gt; &#39;data.frame&#39;: 51 obs. of  4 variables:
+&gt;  $ survived      : Factor w/ 2 levels &quot;no&quot;,&quot;yes&quot;: 2 1 2 2 2 2 2 2 2 2 ...
+&gt;  $ sex           : Factor w/ 2 levels &quot;female&quot;,&quot;male&quot;: 2 1 2 2 1 2 2 1 1 2 ...
+&gt;  $ age           : num  0.917 2 4 1 4 ...
+&gt;  $ passengerClass: Factor w/ 3 levels &quot;1st&quot;,&quot;2nd&quot;,&quot;3rd&quot;: 1 1 1 2 2 2 2 2 2 2 ...</code></pre>
+<pre class="r"><code>length(which(TitanicSurvival$age &lt; 5 &amp; TitanicSurvival$survived == &quot;yes&quot;))</code></pre>
+<pre><code>&gt; [1] 33</code></pre>
+<pre class="r"><code># Jaka jest proporcja (w \%) pomiędzy mężczyznami, a kobietami w 3 klasie?
+male &lt;- subset(TitanicSurvival,TitanicSurvival$sex == &#39;male&#39; &amp;
+               TitanicSurvival$passengerClass == &#39;3rd&#39;)
+female &lt;- subset(TitanicSurvival,TitanicSurvival$sex == &#39;female&#39; &amp;  
+                 TitanicSurvival$passengerClass == &#39;3rd&#39;)
+length(male$survived)/length(female$survived)</code></pre>
+<pre><code>&gt; [1] 2.282407</code></pre>
+<pre class="r"><code># zadanie 2
+library(dplyr)</code></pre>
+<pre><code>&gt; 
+&gt; Dołączanie pakietu: &#39;dplyr&#39;</code></pre>
+<pre><code>&gt; Następujące obiekty zostały zakryte z &#39;package:gdata&#39;:
+&gt; 
+&gt;     combine, first, last</code></pre>
+<pre><code>&gt; Następujące obiekty zostały zakryte z &#39;package:stats&#39;:
+&gt; 
+&gt;     filter, lag</code></pre>
+<pre><code>&gt; Następujące obiekty zostały zakryte z &#39;package:base&#39;:
+&gt; 
+&gt;     intersect, setdiff, setequal, union</code></pre>
+<pre class="r"><code># Ile jest kobiet, a ilu mężczyzn studiuje Leśnictwo?
+table(studenci[,c(2,4)])</code></pre>
+<pre><code>&gt;            Kierunek.studiów
+&gt; Płeć      Ekonomia Leśnictwo Rolnictwo TŻiŻCz
+&gt;   kobieta         12        12        14     19
+&gt;   mężczyzna        8        12         6      2</code></pre>
+<pre class="r"><code>studenci %&gt;%
+  group_by(Płeć, `Kierunek.studiów`) %&gt;%
+  summarise(n())</code></pre>
+<pre><code>&gt; `summarise()` has grouped output by &#39;Płeć&#39;. You can override using the
+&gt; `.groups` argument.</code></pre>
+<pre><code>&gt; # A tibble: 9 × 3
+&gt; # Groups:   Płeć [2]
+&gt;   Płeć      Kierunek.studiów `n()`
+&gt;   &lt;chr&gt;     &lt;chr&gt;            &lt;int&gt;
+&gt; 1 kobieta   Ekonomia            12
+&gt; 2 kobieta   Leśnictwo           12
+&gt; 3 kobieta   Rolnictwo           14
+&gt; 4 kobieta   TŻiŻCz              19
+&gt; 5 kobieta   &lt;NA&gt;                 1
+&gt; 6 mężczyzna Ekonomia             8
+&gt; 7 mężczyzna Leśnictwo           12
+&gt; 8 mężczyzna Rolnictwo            6
+&gt; 9 mężczyzna TŻiŻCz               2</code></pre>
+<pre class="r"><code># Jaka jest średnia stypendium naukowego dla kobiet, a jaka dla mężczyzn?
+mean(studenci$`Stypendium.naukowe`[which(studenci$Płeć==&#39;kobieta&#39;)])</code></pre>
+<pre><code>&gt; [1] 181.2069</code></pre>
+<pre class="r"><code>mean(studenci$`Stypendium.naukowe`[which(studenci$Płeć==&#39;mężczyzna&#39;)])</code></pre>
+<pre><code>&gt; [1] 199.6429</code></pre>
+<pre class="r"><code>studenci %&gt;%
+  group_by(Płeć) %&gt;%
+  summarise(sr = mean(`Stypendium.naukowe`))</code></pre>
+<pre><code>&gt; # A tibble: 2 × 2
+&gt;   Płeć         sr
+&gt;   &lt;chr&gt;     &lt;dbl&gt;
+&gt; 1 kobieta    181.
+&gt; 2 mężczyzna  200.</code></pre>
+<pre class="r"><code># Ile kobiet studiuje rolnictwo?
+table(studenci[,c(2,4)])</code></pre>
+<pre><code>&gt;            Kierunek.studiów
+&gt; Płeć      Ekonomia Leśnictwo Rolnictwo TŻiŻCz
+&gt;   kobieta         12        12        14     19
+&gt;   mężczyzna        8        12         6      2</code></pre>
+<pre class="r"><code>studenci %&gt;%
+  filter(`Kierunek.studiów` == &quot;Rolnictwo&quot; &amp; Płeć == &quot;kobieta&quot;) %&gt;%
+  summarise(n())</code></pre>
+<pre><code>&gt;   n()
+&gt; 1  14</code></pre>
+<pre class="r"><code># Ile studentów leśnictwa nie ma stypendium naukowego?
+nrow(subset(studenci[,c(4,5)],studenci[,4]==&#39;Leśnictwo&#39; &amp; studenci[,5]==0))</code></pre>
+<pre><code>&gt; [1] 5</code></pre>
+<pre class="r"><code>studenci %&gt;%
+  filter(`Kierunek.studiów` == &quot;Leśnictwo&quot; &amp; `Stypendium.naukowe` == 0) %&gt;%
+  summarise(n())</code></pre>
+<pre><code>&gt;   n()
+&gt; 1   5</code></pre>
+<pre class="r"><code># zadanie 3
+attach(cats_birds) # Wybór zmiennej z ramki danych
+gatunek</code></pre>
+<pre><code>&gt;  [1] &quot;Tygrys&quot;         &quot;Lew&quot;            &quot;Jaguar&quot;         &quot;Puma&quot;          
+&gt;  [5] &quot;Leopard&quot;        &quot;Gepard&quot;         &quot;Irbis&quot;          &quot;Jerzyk&quot;        
+&gt;  [9] &quot;Strus&quot;          &quot;Orzel przedni&quot;  &quot;Sokol wedrowny&quot; &quot;Sokol norweski&quot;
+&gt; [13] &quot;Albatros&quot;</code></pre>
+<pre class="r"><code>detach(cats_birds)
+with(cats_birds, gatunek) # Wybór zmiennej - drugi sposób</code></pre>
+<pre><code>&gt;  [1] &quot;Tygrys&quot;         &quot;Lew&quot;            &quot;Jaguar&quot;         &quot;Puma&quot;          
+&gt;  [5] &quot;Leopard&quot;        &quot;Gepard&quot;         &quot;Irbis&quot;          &quot;Jerzyk&quot;        
+&gt;  [9] &quot;Strus&quot;          &quot;Orzel przedni&quot;  &quot;Sokol wedrowny&quot; &quot;Sokol norweski&quot;
+&gt; [13] &quot;Albatros&quot;</code></pre>
+<pre class="r"><code>cats_birds$gatunek # Wybór zmiennej - trzeci sposób</code></pre>
+<pre><code>&gt;  [1] &quot;Tygrys&quot;         &quot;Lew&quot;            &quot;Jaguar&quot;         &quot;Puma&quot;          
+&gt;  [5] &quot;Leopard&quot;        &quot;Gepard&quot;         &quot;Irbis&quot;          &quot;Jerzyk&quot;        
+&gt;  [9] &quot;Strus&quot;          &quot;Orzel przedni&quot;  &quot;Sokol wedrowny&quot; &quot;Sokol norweski&quot;
+&gt; [13] &quot;Albatros&quot;</code></pre>
+<pre class="r"><code>cats_birds[,1] # Wybór zmiennej - czwarty sposób</code></pre>
+<pre><code>&gt;  [1] &quot;Tygrys&quot;         &quot;Lew&quot;            &quot;Jaguar&quot;         &quot;Puma&quot;          
+&gt;  [5] &quot;Leopard&quot;        &quot;Gepard&quot;         &quot;Irbis&quot;          &quot;Jerzyk&quot;        
+&gt;  [9] &quot;Strus&quot;          &quot;Orzel przedni&quot;  &quot;Sokol wedrowny&quot; &quot;Sokol norweski&quot;
+&gt; [13] &quot;Albatros&quot;</code></pre>
+<pre class="r"><code>cats_birds[2,]</code></pre>
+<pre><code>&gt;   gatunek waga dlugosc predkosc habitat zywotnosc druzyna
+&gt; 2     Lew  200       2       80  Afryka        29     Kot</code></pre>
+<pre class="r"><code>cats_birds[-2,]</code></pre>
+<pre><code>&gt;           gatunek   waga dlugosc predkosc  habitat zywotnosc druzyna
+&gt; 1          Tygrys 300.00     2.5       60     Azja        25     Kot
+&gt; 3          Jaguar 100.00     1.7       90  Ameryka        15     Kot
+&gt; 4            Puma  80.00     1.7       70  Ameryka        13     Kot
+&gt; 5         Leopard  70.00     1.4       85     Azja        21     Kot
+&gt; 6          Gepard  60.00     1.4      115   Afryka        12     Kot
+&gt; 7           Irbis  50.00     1.3       65     Azja        18     Kot
+&gt; 8          Jerzyk   0.05     0.2      170 Euroazja        20    Ptak
+&gt; 9           Strus 150.00     2.5       70   Afryka        45    Ptak
+&gt; 10  Orzel przedni   5.00     0.9      160   Polnoc        20    Ptak
+&gt; 11 Sokol wedrowny   0.70     0.5      110   Polnoc        15    Ptak
+&gt; 12 Sokol norweski   2.00     0.7      100   Polnoc        20    Ptak
+&gt; 13       Albatros   4.00     0.8      120 Poludnie        50    Ptak</code></pre>
+<pre class="r"><code>cats_birds[c(2, 4), -c(5:7)] # Subframe</code></pre>
+<pre><code>&gt;   gatunek waga dlugosc predkosc
+&gt; 2     Lew  200     2.0       80
+&gt; 4    Puma   80     1.7       70</code></pre>
+<pre class="r"><code>szybkie.zwierzeta &lt;- cats_birds$predkosc &gt; 100
+cats_birds[szybkie.zwierzeta, ]</code></pre>
+<pre><code>&gt;           gatunek  waga dlugosc predkosc  habitat zywotnosc druzyna
+&gt; 6          Gepard 60.00     1.4      115   Afryka        12     Kot
+&gt; 8          Jerzyk  0.05     0.2      170 Euroazja        20    Ptak
+&gt; 10  Orzel przedni  5.00     0.9      160   Polnoc        20    Ptak
+&gt; 11 Sokol wedrowny  0.70     0.5      110   Polnoc        15    Ptak
+&gt; 13       Albatros  4.00     0.8      120 Poludnie        50    Ptak</code></pre>
+<pre class="r"><code>sort(cats_birds$predkosc) # Only for vectors</code></pre>
+<pre><code>&gt;  [1]  60  65  70  70  80  85  90 100 110 115 120 160 170</code></pre>
+<pre class="r"><code>pozycje &lt;- order(cats_birds$predkosc) # Vector of indexes cats_birds[positions, ]
+cats_birds[pozycje, ]</code></pre>
+<pre><code>&gt;           gatunek   waga dlugosc predkosc  habitat zywotnosc druzyna
+&gt; 1          Tygrys 300.00     2.5       60     Azja        25     Kot
+&gt; 7           Irbis  50.00     1.3       65     Azja        18     Kot
+&gt; 4            Puma  80.00     1.7       70  Ameryka        13     Kot
+&gt; 9           Strus 150.00     2.5       70   Afryka        45    Ptak
+&gt; 2             Lew 200.00     2.0       80   Afryka        29     Kot
+&gt; 5         Leopard  70.00     1.4       85     Azja        21     Kot
+&gt; 3          Jaguar 100.00     1.7       90  Ameryka        15     Kot
+&gt; 12 Sokol norweski   2.00     0.7      100   Polnoc        20    Ptak
+&gt; 11 Sokol wedrowny   0.70     0.5      110   Polnoc        15    Ptak
+&gt; 6          Gepard  60.00     1.4      115   Afryka        12     Kot
+&gt; 13       Albatros   4.00     0.8      120 Poludnie        50    Ptak
+&gt; 10  Orzel przedni   5.00     0.9      160   Polnoc        20    Ptak
+&gt; 8          Jerzyk   0.05     0.2      170 Euroazja        20    Ptak</code></pre>
+<p><strong>Pierwsze kroki programowania - ćwiczenia:</strong></p>
+<ol style="list-style-type: decimal">
+<li>Stwórz wektor x, który zawierałby wyniki testu studentów (maksymalna
+liczba punktów do zdobycia 50). Następnie stwórz wektor y, który dla
+każdego elementu wektora x zwracałby ocenę zgodnie z zasadami <span
+class="math display">\[f(x) = \begin{cases}
+5.0 &amp; \text{if } x \geq 45\\
+4.5 &amp; \text{if } 40 \geq x &lt; 45 \\
+4.0 &amp; \text{if } 35 \geq x &lt; 40 \\
+3.5 &amp; \text{if } 30 \geq x &lt; 35 \\
+3.0 &amp; \text{if } 25 \geq x &lt; 30 \\
+2.0 &amp; \text{if } x &lt; 25 \\
+\end{cases}
+\]</span></li>
+<li>Stwórz funkcję, która dla wektorów x i y o tej samej długości,
+wyznacza następujące macierze:</li>
+</ol>
+<ul>
+<li>macierz A, której elementy to <span class="math inline">\(a_{ij} =
+x_i * y_j\)</span>.</li>
+<li>macierz B, której elementy to <span class="math inline">\(b_{ij} =
+x_i / y_j\)</span>.</li>
+<li>wektor d, której elementy to <span class="math inline">\(d_{i} = x_i
+* y_i\)</span>.</li>
+<li>main - nazwa wykresu</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>Stwórz funkcję, która jako argument przyjmuje wektor liczb, a jako
+wynik zwraca 3 najmniejsze i 3 największe liczby. Jeśli podany wektor
+jest krótszy niż 3 liczby, to wyświetl napis “za krótki argument”.</li>
+<li>Stwórz funkcję zależną od parametru n, która zwraca spośród n liczb
+naturalnych, te dla których 2 i 3 nie są dzielnikami.</li>
+</ol>
+<p><strong>Pierwsze kroki programowania - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+x &lt;- c(30,25,40,49,38)
+y &lt;- numeric(5)
+for (i in 1:5)
+{
+  if (x[i] &lt; 25) y[i] &lt;- &quot;2.0&quot; else 
+    if (x[i] &gt;= 25 &amp; x[i] &lt; 30) y[i] &lt;- &quot;3.0&quot; else 
+      if (x[i] &gt;= 30 &amp; x[i] &lt; 35) y[i] &lt;- &quot;3.5&quot; else 
+        if (x[i] &gt;= 35 &amp; x[i] &lt; 40) y[i] &lt;- &quot;4.0&quot; else 
+          if (x[i] &gt;= 40 &amp; x[i] &lt;45) y[i] &lt;- &quot;4.5&quot; else 
+            if (x[i] &gt;= 45) y[i] &lt;- &quot;5.0&quot;
+}
+
+# zadanie 2
+macierze &lt;- function(x,y){
+  A &lt;- x %*% t(y)
+  B &lt;- outer(x, y, FUN = &quot;/&quot;)
+  d &lt;- x * y
+  list(A = A, B = B, d = d)
+}
+
+# zadanie 3
+funckja2 &lt;- function(x){
+  if (length(x)&lt;3) cat(&quot;za krótki argument&quot;) else
+  {
+    a &lt;- sort(x)
+    wynik &lt;- c(head(a,3),tail(a,3))
+    wynik
+  }
+}
+
+# zadanie 4
+nie.dzielniki &lt;- function(n)
+{
+  wynik &lt;- NULL
+  for (i in 1:n) if (i %% 2 != 0 &amp; i %% 3 != 0) wynik &lt;- c(wynik, i)
+  wynik
+}</code></pre>
+<p><strong>Wykresy - ćwiczenia:</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Na podstawie danych studenci.xlsx proszę stworzyć wykres rozrzutu
+(funkcja typu punktowego), gdzie na osi X znajdować się będzie wiek
+studentów, a na osi Y wysokość stypendium. Proszę zaznaczyć kolorem
+czerwonym kobiety, a niebieskim mężczyzn. Znaczniki danych niech bedą
+zamalowanymi kropkami. Nazwij osie wykresu.</p></li>
+<li><p>Utwórz wykres dwuczęściowy z wykorzystaniem funkcji i parametru .
+Na górnym wykresie narysuj w przedziale <span class="math inline">\([-5,
+5]\)</span> następujące funkcje: <span class="math inline">\(y =
+x^2\)</span>; <span class="math inline">\(y = (x-2)^2\)</span>; <span
+class="math inline">\(y = (x-2)^2+3\)</span>; <span
+class="math inline">\(y = x^2+3\)</span>; <span class="math inline">\(y
+= (x+1)^2-2\)</span>. Dodaj linie <span class="math inline">\(y =
+0\)</span> w kolorze czarnym. Każda funkcja niech będzie narysowana
+innym kolorem. Zaznacz punkty odpowiadające argumentom <span
+class="math inline">\(-0.2\)</span> i <span
+class="math inline">\(0.8\)</span>. Na wykresie umieść legendę z opisem
+wzorów. Nadaj tytuł: “Wykresy funkcji przesunietych” i dodaj w dowolnym
+miejscu tekst: “Zrobione przez…”. Na dolnym wykresie narysuj na
+podstawie pliku studenci.xlsx histogram dla wysokości stypendium z
+podziałem na płeć.</p></li>
+<li><p>Na podstawie danych TitanicSurvival wykonaj opisujący przeżycie
+pasażerów różnych klas. Dodaj etykiety klas. Dodaj tekst określający
+dokładne wartości. Zaznacz średnie wartości na wykresie.</p></li>
+</ol>
+<p><strong>Wykresy - odpowiedzi:</strong></p>
+<pre class="r"><code># zadanie 1
+attach(studenci)
+plot(Wiek, `Stypendium.naukowe`, type=&quot;p&quot;, pch = 20, 
+     col = ifelse(Płeć == &quot;kobieta&quot;, &quot;red&quot;, &quot;blue&quot;),
+     xlab = &quot;wiek&quot;, ylab = &quot;stypendium&quot;)</code></pre>
+<p><img src="figure/wprowadzenie.Rmd/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>detach(studenci)
+
+# zadanie 2
+par(mfrow = c(1, 2))
+
+x &lt;- seq(-5, 5, by = 0.5)
+curve(x^2, from = -5, to = 5 , ylab = &quot;y&quot;, col = 1)
+curve((x-2)^2, from = -5, to = 5 , col = 2, add = T)
+curve((x-2)^2+3, from = -5, to = 5 , col = 3, add = T)
+curve(x^2+3, from = -5, to = 5 , col = 4, add = T)
+curve((x+1)^2-2, from = -5, to = 5 , col = 5, add = T)
+x &lt;- c(-.2, .8)
+points(x, x^2,  col = 1, add = T)
+points(x, (x-2)^2, col = 2, add = T)
+points(x, (x-2)^2+3, col = 3, add = T)
+points(x, x^2+3, col = 4, add = T)
+points(x, (x+1)^2-2, col = 5, add = T)
+title(&quot;Wykresy funkcji przesunietych&quot;)
+text(c(-4,20), &quot;Zrobione przez Ale&quot;)
+
+a &lt;- subset(studenci, Płeć == &quot;kobieta&quot;)
+b &lt;- subset(studenci, Płeć == &quot;mężczyzna&quot;)
+hist(a$`Stypendium.naukowe`, main = &quot;Histogram&quot;, 
+     xlab = &quot;Stypendium&quot;, col = &quot;red&quot;)
+hist(b$`Stypendium.naukowe`, 
+     xlab = &quot;Stypendium&quot;, col = &quot;blue&quot;, add=T)</code></pre>
+<p><img src="figure/wprowadzenie.Rmd/unnamed-chunk-7-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>par(mfrow = c(1,1))
+
+# zadanie 3
+attach(TitanicSurvival)
+dane &lt;- table(survived, passengerClass)
+detach(TitanicSurvival)
+barplot(dane, width = 1,  beside = T, 
+        legend.text = TRUE,
+        args.legend = list(x = 9.5, y = max(dane), bty = &quot;n&quot;)
+       )
+text(c(1.5, 2.5, 4.5, 5.5, 7.5, 8.5), c(dane)/2, labels = c(dane),
+     xpd = TRUE, col = &#39;white&#39;)</code></pre>
+<p><img src="figure/wprowadzenie.Rmd/unnamed-chunk-7-3.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>&gt; R version 4.2.1 (2022-06-23)
+&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+&gt; Running under: macOS Big Sur ... 10.16
+&gt; 
+&gt; Matrix products: default
+&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+&gt; 
+&gt; locale:
+&gt; [1] pl_PL.UTF-8/pl_PL.UTF-8/pl_PL.UTF-8/C/pl_PL.UTF-8/pl_PL.UTF-8
+&gt; 
+&gt; attached base packages:
+&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+&gt; 
+&gt; other attached packages:
+&gt; [1] dplyr_1.0.10     gdata_2.18.0.1   openxlsx_4.2.5.1 effects_4.2-2   
+&gt; [5] carData_3.0-5    aplpack_1.3.5    knitr_1.40       workflowr_1.7.0 
+&gt; 
+&gt; loaded via a namespace (and not attached):
+&gt;  [1] Rcpp_1.0.9       lattice_0.20-45  getPass_0.2-2    ps_1.7.2        
+&gt;  [5] gtools_3.9.3     assertthat_0.2.1 rprojroot_2.0.3  digest_0.6.30   
+&gt;  [9] utf8_1.2.2       R6_2.5.1         survey_4.1-1     evaluate_0.18   
+&gt; [13] httr_1.4.4       highr_0.9        pillar_1.8.1     rlang_1.0.6     
+&gt; [17] rstudioapi_0.14  minqa_1.2.5      whisker_0.4      callr_3.7.3     
+&gt; [21] nloptr_2.0.3     jquerylib_0.1.4  Matrix_1.5-1     rmarkdown_2.18  
+&gt; [25] splines_4.2.1    lme4_1.1-31      stringr_1.4.1    compiler_4.2.1  
+&gt; [29] httpuv_1.6.6     xfun_0.34        pkgconfig_2.0.3  htmltools_0.5.3 
+&gt; [33] tcltk_4.2.1      mitools_2.4      nnet_7.3-18      insight_0.18.6  
+&gt; [37] tidyselect_1.2.0 tibble_3.1.8     fansi_1.0.3      later_1.3.0     
+&gt; [41] MASS_7.3-58.1    grid_4.2.1       nlme_3.1-160     jsonlite_1.8.3  
+&gt; [45] lifecycle_1.0.3  DBI_1.1.3        git2r_0.30.1     magrittr_2.0.3  
+&gt; [49] formatR_1.12     zip_2.2.2        cli_3.4.1        stringi_1.7.8   
+&gt; [53] cachem_1.0.6     fs_1.5.2         promises_1.2.0.1 bslib_0.4.1     
+&gt; [57] vctrs_0.5.0      generics_0.1.3   boot_1.3-28      tools_4.2.1     
+&gt; [61] glue_1.6.2       processx_3.8.0   fastmap_1.1.0    survival_3.4-0  
+&gt; [65] yaml_2.3.6       colorspace_2.0-3 sass_0.4.2</code></pre>
+</div>
+
+
+<!-- Adjust MathJax settings so that all math formulae are shown using
+TeX fonts only; see
+https://docs.mathjax.org/en/latest/web/configuration.html. This will make
+the presentation more consistent at the cost of the webpage sometimes
+taking slightly longer to load. Note that this only works because the
+footer is added to webpages before the MathJax javascript. -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { availableFonts: ["TeX"] }
+  });
+</script>
+
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

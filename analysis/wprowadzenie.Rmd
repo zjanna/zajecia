@@ -1,0 +1,490 @@
+---
+title: "Zajęcia z R"
+author: "Joanna Zyprych-Walczak"
+date: "20 Styczeń 2023"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+subtitle: Wprowadzenie do R
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(comment = '>')
+```
+
+**Pierwsze uruchomienie - ćwiczenia**
+
+1. Zainstaluj pakiet ‘aplpack’, dowiedz się czegoś o funkcji ‘faces’ i narysuj bazując na tych informacjach zestaw twarzy z tematyką świąt Bożego Narodzenia.
+2. Znajdź, jakie funkcje istnieją w R, które powiązane są ze słowem kluczowym ‘ test’
+3. Zainstaluj pakiet 'effects'. Sprawdź czego dotyczą dane TitanicSurvival.
+
+**Pierwsze uruchomienie - odpowiedzi**
+
+```{r, tidy=T, comment = '>'}
+
+set.seed(123)
+# zadanie 1
+library('aplpack')
+help(faces)
+faces(1,1,face.type=2)
+
+# zadanie 2
+apropos('test')
+
+# zadanie 3
+library('effects')
+data(TitanicSurvival)
+help(TitanicSurvival)
+```
+
+  
+**Wektory - ćwiczenia**
+
+1. Wprowadź dowolne wektory x,y,z. Wykonaj następujące operacje na danych x,y,z:
+
+    y-z, x+y, x/2, ln(x) – cos y
+
+2. Stwórz dane, które będą zawierały 8 jedynek i zapisz je pod zmienną cc, a następnie utwórz dane zawierające 199 zer i zapisz pod zmienną d.
+3. Oblicz:
+
+    $10^2+11^2+...+20^2$,
+
+    $\sqrt{log(1)}+\sqrt{log(10)}+...+\sqrt{log(1000)}$
+
+4. Użyj funkcji rep żeby utworzyć następujące dane
+
+    +  1 1 1 1 1 1 1 1 
+    + 1 2 1 2 1 2 1 2 1 2 1 2
+    + 0 0 0 0 0 0 0 0 1 1 1 1
+    + 4 3 3 2 2 2 1 1 1 1
+    + 23   23  23  32  42  42
+    + „A”  „B”  „A”  „B”  „A”  „B”  
+
+**Wektory - odpowiedzi:**
+
+```{r}
+# zadanie 1
+x<-2:7
+y<-c(rep(2,3),rep(3,3))
+z<-c(x[1:3],y[c(3,4,5)])
+y-z
+x+y
+x/2
+log(x, base = exp(1))-cos(y)
+
+# zadanie 2
+cc<-rep(1,8)
+cc
+d<-rep(0,199)
+d
+
+# zadanie 3
+sum((10:20)^2)
+sum(sqrt(log(10^(0:3))))
+
+# zadanie 4
+rep(1,8)
+rep(c(1,2),6)
+c(rep(0,8),rep(1,4))
+rep(4:1,1:4)
+rep(c(23, 32, 42), c(3, 1, 2)) 
+rep(c("A","B"),3)
+```
+
+**Macierze - ćwiczenia:**
+
+1. Zadeklaruj poniższe macierze:
+\[A =
+ \begin{pmatrix}
+1 &  2 & -1&  0 \\ 
+3 & -2 & 4 & 5 \\
+2 & 6 & 5 & -3 \\
+0 & 1&  5&  -4 \\
+ \end{pmatrix}
+\]
+\[
+B =
+ \begin{pmatrix}
+3 & 6 \\
+4 & 0 \\ 
+2 & -1 \\ 
+1 & 1 \\ 
+ \end{pmatrix}
+\]
+  Oblicz wyznacznik macierzy $\textbf{A}$, znajdź iloczyn $\textbf{AB}$, znajdź macierz transponowaną $\mathbf{B}^T$.
+
+2. Dana jest macierz \textbf{A}:
+\[
+A =
+ \begin{pmatrix}
+2&  3\\
+1&  4\\
+ \end{pmatrix}
+\]
+  Oblicz $\mathbf{A}^2-6\mathbf{A}+4\mathbf{I}$, gdzie $\mathbf{I}$ jest macierzą jednostkową postaci:
+\[
+I =
+ \begin{pmatrix}
+1&  0 \\
+0&  1 \\
+\end{pmatrix}
+\]
+
+3. Mając:
+\[
+A =
+ \begin{pmatrix}
+1 & -1 &5 \\
+2& 1& -4 \\
+\end{pmatrix},
+\]
+\[
+B =
+ \begin{pmatrix}
+-2 &-1& 2 \\
+3& 1& 4 \\
+\end{pmatrix},
+\]
+\[
+C =
+ \begin{pmatrix}
+0 &-3& 9 \\
+3 &18 &-6 \\
+\end{pmatrix}
+\]
+  Oblicz:
+    * $\mathbf{A}+\mathbf{B}$,
+    * $\mathbf{A}-\mathbf{B}$,
+    * $2\mathbf{A}+3\mathbf{B}$,
+    * $\mathbf{A}^T-4\mathbf{B}^T$,    				
+
+4. Zadeklaruj na 3 sposoby:
+\[
+A =
+ \begin{pmatrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9 \\
+\end{pmatrix}.
+\]
+  Następnie, korzystając z funkcji R:
+    - Wyznacz liczbę wierszy i kolumn macierzy $\textbf{A}$. 
+    - Wyznacz sumę wszystkich elementów macierzy $\textbf{A}$.
+    - Wyznacz sumy wszytkich elementów w poszczególnych kolumnach macierzy $\textbf{A}$. 
+    - Wyznacz sumy wszytkich elementów w poszczególnych wierszach macierzy $\textbf{A}$. 
+    - Oblicz $A_{11}$ + $A_{32}$. 
+    - Wyświetl zawartość drugiej kolumny. 
+    - Wyświetl zawartość pierwszego wiersza.
+
+**Macierze - odpowiedzi:**
+
+```{r}
+# zadanie 1
+A<-matrix(c(1,2,-1,0,3,-2,4,5,2,6,5,-3,0,1,5,-4),4,4,byrow=T)
+A
+B<-matrix(c(3,4,2,1,6,0,-1,1),4,2)
+B
+det(A)
+A%*%B
+t(B)
+
+# zadanie 2
+A<-matrix(c(2,3,1,4),2,2,byrow=T)
+A%*%A-6*A+4*diag(2)
+
+# zadanie 3
+A<-matrix(c(1,-1,5,2,1,-4),2,3,byrow=T)
+B<-matrix(c(-2,-1,2,3,1,4),2,3,byrow=T)
+C<-matrix(c(0,3,-3,18,9,-6),2,3)
+A+B
+A-B
+A+3*B
+t(A)-4*t(B)
+
+# zadanie 4
+A<-matrix(1:9,3,3,byrow=T)
+nrow(A)
+ncol(A)
+sum(A)
+colSums(A)
+rowSums(A)
+A[1,1]+A[3,2]
+A[,2]
+A[1,]
+```
+
+**Wczytywanie danych - ćwiczenia:**
+
+1. Ustaw ściężkę na "~/Documents/szkolenie_R/" i załaduj pierwszy arkusz z pliku studenci.xlsx. 
+
+2. Załaduj pierwszy arkusz z pliku koty_ptaki.xls ze strony 'http://biecek.pl/MOOC/dane/'.
+
+3. Załaduj plik koty_ptaki.csv ze strony 'http://biecek.pl/MOOC/dane/' (separatorem jest tutaj ";").
+
+4. Załaduj obiekt koty_ptaki.rda ze strony 'http://biecek.pl/MOOC/dane/'.
+
+
+**Wczytywanie danych - odpowiedzi:**
+
+```{r}
+# zadanie 1
+library(openxlsx) # pakiet do wczytywania danych z Excela
+studenci<-read.xlsx('data/studenci.xlsx',
+                       sheet='Arkusz1',
+                       colNames  = T)
+
+# zadanie 2
+read.table(file = 'http://biecek.pl/MOOC/dane/koty_ptaki.csv', 
+           header = TRUE, sep = ';', dec = ',')
+
+# zadanie 3
+library(gdata) # pakiet do czytania plików Excela z internetu
+cats_birds <- read.xls('http://biecek.pl/MOOC/dane/koty_ptaki.xls', 
+                       sheet = 1)
+
+# zadanie 4
+load(url('http://biecek.pl/MOOC/dane/koty_ptaki.rda'))
+```
+
+**Ramki danych - ćwiczenia:**
+
+1. Załaduj dane TitanicSurvival z pakietu effects. Podaj wymiary danych, ile jest wierszy i kolumn, jakie są nazwy zmiennych, jakie są nazwy 6 pierwszych wierszy. Spróbuj odpowiedzieć na następujące pytania:
+    - Ile jest osób w tym zestawie danych? 
+    - Ile jest w nich kobiet, a ile mężczyzn?
+    - Ile kobiet przeżyło? Ilu mężczyzn przeżyło?
+    - Ile kobiet z pierwszej klasy miało powyżej 30 lat?
+    - Ilu dzieci poniżej 5 lat przeżyło?
+    - Jaka jest proporcja (w \%) pomiędzy mężczyznami, a kobietami w 3 klasie?
+    - Jaka jest proporcja pomiędzy przeżytymi kobietami, a mężczyznami?
+
+2. Na podstawie danych z pliku "studenci.xlsx" odpowiedz na następujące pytania przy użyciu pakietu dplyr oraz bez niego:
+    * Ile jest kobiet, a ilu mężczyzn studiuje Leśnictwo?
+    * Jaka jest średnia stypendium naukowego dla kobiet, a jaka dla mężczyzn?
+    * Ile kobiet studiuje Rolnictwo?
+    * Ile studentów Leśnictwa nie ma stypendium naukowego?
+
+3. Korzystając obiektu cats_birds spróbuj wykonać następujące polecenia:
+    - Wyświetl zawartość zmiennej "gatunki".
+    - Wyświetl drugi wiersz danych.
+    - Usuń drugi wiersz danych.
+    - Wyświetl drugi, trzeci i czwarty wiersz dla czterech pierwszych kolumn.
+    - Znajdź podzbiór zwierząt, które osiągają prędkość większą niż 100 km/h.
+    - Przesortuj wektor prędkości zwierząt.
+    - Uporządkuj dane względem predkości.
+  
+**Ramki danych - odpowiedzi:**
+
+```{r, warning=F}
+# zadanie 1
+library('effects')
+data("TitanicSurvival")
+dim(TitanicSurvival)
+nrow(TitanicSurvival)
+ncol(TitanicSurvival)
+names(TitanicSurvival)
+colnames(TitanicSurvival) # alternatywny sposób podania nazw zmiennych
+head(rownames(TitanicSurvival))
+
+# Ile jest osób w tym zestawie danych? 
+str(TitanicSurvival)
+nrow(TitanicSurvival)
+# Ile jest w nich kobiet, a ile mężczyzn?
+str(subset(TitanicSurvival,TitanicSurvival$sex == 'female'))
+str(subset(TitanicSurvival,TitanicSurvival$sex == 'male'))
+length(which(TitanicSurvival$sex == 'female'))
+length(which(TitanicSurvival$sex == 'male'))
+# Ile kobiet przeżyło? Ilu mężczyzn przeżyło?
+length(which(TitanicSurvival$sex == 'female' & 
+             TitanicSurvival$survived == "yes"))
+length(which(TitanicSurvival$sex == 'male' & 
+             TitanicSurvival$survived == "yes"))
+# Ile kobiet z pierwszej klasy miało powyżej 30 lat?
+length(which(TitanicSurvival$sex == 'female' & 
+             TitanicSurvival$age > 30 & 
+             TitanicSurvival$passengerClass == "1st"))
+# Ilu dzieci poniżej 5 lat przeżyło?
+str(subset(TitanicSurvival,TitanicSurvival$age < 5))
+length(which(TitanicSurvival$age < 5 & TitanicSurvival$survived == "yes"))
+# Jaka jest proporcja (w \%) pomiędzy mężczyznami, a kobietami w 3 klasie?
+male <- subset(TitanicSurvival,TitanicSurvival$sex == 'male' &
+               TitanicSurvival$passengerClass == '3rd')
+female <- subset(TitanicSurvival,TitanicSurvival$sex == 'female' &  
+                 TitanicSurvival$passengerClass == '3rd')
+length(male$survived)/length(female$survived)
+
+# zadanie 2
+library(dplyr)
+# Ile jest kobiet, a ilu mężczyzn studiuje Leśnictwo?
+table(studenci[,c(2,4)])
+
+studenci %>%
+  group_by(Płeć, `Kierunek.studiów`) %>%
+  summarise(n())
+
+# Jaka jest średnia stypendium naukowego dla kobiet, a jaka dla mężczyzn?
+mean(studenci$`Stypendium.naukowe`[which(studenci$Płeć=='kobieta')])
+mean(studenci$`Stypendium.naukowe`[which(studenci$Płeć=='mężczyzna')])
+
+studenci %>%
+  group_by(Płeć) %>%
+  summarise(sr = mean(`Stypendium.naukowe`))
+
+# Ile kobiet studiuje rolnictwo?
+table(studenci[,c(2,4)])
+
+studenci %>%
+  filter(`Kierunek.studiów` == "Rolnictwo" & Płeć == "kobieta") %>%
+  summarise(n())
+
+# Ile studentów leśnictwa nie ma stypendium naukowego?
+nrow(subset(studenci[,c(4,5)],studenci[,4]=='Leśnictwo' & studenci[,5]==0))
+
+studenci %>%
+  filter(`Kierunek.studiów` == "Leśnictwo" & `Stypendium.naukowe` == 0) %>%
+  summarise(n())
+
+
+# zadanie 3
+attach(cats_birds) # Wybór zmiennej z ramki danych
+gatunek
+detach(cats_birds)
+with(cats_birds, gatunek) # Wybór zmiennej - drugi sposób
+cats_birds$gatunek # Wybór zmiennej - trzeci sposób
+cats_birds[,1] # Wybór zmiennej - czwarty sposób
+cats_birds[2,]
+cats_birds[-2,]
+cats_birds[c(2, 4), -c(5:7)] # Subframe
+szybkie.zwierzeta <- cats_birds$predkosc > 100
+cats_birds[szybkie.zwierzeta, ]
+sort(cats_birds$predkosc) # Only for vectors
+pozycje <- order(cats_birds$predkosc) # Vector of indexes cats_birds[positions, ]
+cats_birds[pozycje, ]
+```
+
+**Pierwsze kroki programowania - ćwiczenia:**
+
+1. Stwórz wektor x, który zawierałby wyniki testu studentów (maksymalna liczba punktów do zdobycia 50). Następnie stwórz wektor y, który dla każdego elementu wektora x zwracałby ocenę zgodnie z zasadami
+\[f(x) = \begin{cases}
+    5.0 & \text{if } x \geq 45\\
+    4.5 & \text{if } 40 \geq x < 45 \\
+    4.0 & \text{if } 35 \geq x < 40 \\
+    3.5 & \text{if } 30 \geq x < 35 \\
+    3.0 & \text{if } 25 \geq x < 30 \\
+    2.0 & \text{if } x < 25 \\
+\end{cases}
+\]
+2. Stwórz funkcję, która dla wektorów x i y o tej samej długości, wyznacza następujące macierze:
+  
+  * macierz A, której elementy to $a_{ij} = x_i * y_j$.
+  * macierz B, której elementy to $b_{ij} = x_i / y_j$.
+  * wektor d, której elementy to $d_{i} = x_i * y_i$.
+  * main - nazwa wykresu
+
+3. Stwórz funkcję, która jako argument przyjmuje wektor liczb, a jako wynik zwraca 3 najmniejsze i 3 największe liczby. Jeśli podany wektor jest krótszy niż 3 liczby, to wyświetl napis "za krótki argument".
+4. Stwórz funkcję zależną od parametru n, która zwraca spośród n liczb naturalnych, te dla których 2 i 3 nie są dzielnikami.
+
+**Pierwsze kroki programowania - odpowiedzi:**
+
+```{r}
+# zadanie 1
+x <- c(30,25,40,49,38)
+y <- numeric(5)
+for (i in 1:5)
+{
+  if (x[i] < 25) y[i] <- "2.0" else 
+    if (x[i] >= 25 & x[i] < 30) y[i] <- "3.0" else 
+      if (x[i] >= 30 & x[i] < 35) y[i] <- "3.5" else 
+        if (x[i] >= 35 & x[i] < 40) y[i] <- "4.0" else 
+          if (x[i] >= 40 & x[i] <45) y[i] <- "4.5" else 
+            if (x[i] >= 45) y[i] <- "5.0"
+}
+
+# zadanie 2
+macierze <- function(x,y){
+  A <- x %*% t(y)
+  B <- outer(x, y, FUN = "/")
+  d <- x * y
+  list(A = A, B = B, d = d)
+}
+
+# zadanie 3
+funckja2 <- function(x){
+  if (length(x)<3) cat("za krótki argument") else
+  {
+    a <- sort(x)
+    wynik <- c(head(a,3),tail(a,3))
+    wynik
+  }
+}
+
+# zadanie 4
+nie.dzielniki <- function(n)
+{
+  wynik <- NULL
+  for (i in 1:n) if (i %% 2 != 0 & i %% 3 != 0) wynik <- c(wynik, i)
+  wynik
+}
+```
+
+**Wykresy - ćwiczenia:**
+
+1. Na podstawie danych studenci.xlsx proszę stworzyć wykres rozrzutu (funkcja \emph{plot()} typu punktowego), gdzie na osi X znajdować się będzie wiek studentów, a na osi Y wysokość stypendium. Proszę zaznaczyć kolorem czerwonym kobiety, a niebieskim mężczyzn. Znaczniki danych niech bedą zamalowanymi kropkami. Nazwij osie wykresu.
+
+2. Utwórz wykres dwuczęściowy z wykorzystaniem funkcji \emph{par()} i parametru \texttt{mfrow}. Na górnym wykresie narysuj w przedziale $[-5, 5]$ następujące funkcje:
+  $y = x^2$; $y = (x-2)^2$; $y = (x-2)^2+3$; $y = x^2+3$; $y = (x+1)^2-2$.
+Dodaj linie $y = 0$ w kolorze czarnym. Każda funkcja niech będzie narysowana innym kolorem. Zaznacz punkty odpowiadające argumentom $-0.2$ i $0.8$. Na wykresie umieść legendę z opisem wzorów. Nadaj tytuł: "Wykresy funkcji przesunietych" i dodaj w dowolnym miejscu tekst: "Zrobione przez...".
+Na dolnym wykresie narysuj na podstawie pliku studenci.xlsx histogram dla wysokości stypendium z podziałem na płeć.
+
+3. Na podstawie danych TitanicSurvival wykonaj opisujący przeżycie pasażerów różnych klas. Dodaj etykiety klas. Dodaj tekst określający dokładne wartości. Zaznacz średnie wartości na wykresie. 
+
+**Wykresy - odpowiedzi:**
+
+```{r, fig.height=4, warning=F}
+# zadanie 1
+attach(studenci)
+plot(Wiek, `Stypendium.naukowe`, type="p", pch = 20, 
+     col = ifelse(Płeć == "kobieta", "red", "blue"),
+     xlab = "wiek", ylab = "stypendium")
+detach(studenci)
+
+# zadanie 2
+par(mfrow = c(1, 2))
+
+x <- seq(-5, 5, by = 0.5)
+curve(x^2, from = -5, to = 5 , ylab = "y", col = 1)
+curve((x-2)^2, from = -5, to = 5 , col = 2, add = T)
+curve((x-2)^2+3, from = -5, to = 5 , col = 3, add = T)
+curve(x^2+3, from = -5, to = 5 , col = 4, add = T)
+curve((x+1)^2-2, from = -5, to = 5 , col = 5, add = T)
+x <- c(-.2, .8)
+points(x, x^2,  col = 1, add = T)
+points(x, (x-2)^2, col = 2, add = T)
+points(x, (x-2)^2+3, col = 3, add = T)
+points(x, x^2+3, col = 4, add = T)
+points(x, (x+1)^2-2, col = 5, add = T)
+title("Wykresy funkcji przesunietych")
+text(c(-4,20), "Zrobione przez Ale")
+
+a <- subset(studenci, Płeć == "kobieta")
+b <- subset(studenci, Płeć == "mężczyzna")
+hist(a$`Stypendium.naukowe`, main = "Histogram", 
+     xlab = "Stypendium", col = "red")
+hist(b$`Stypendium.naukowe`, 
+     xlab = "Stypendium", col = "blue", add=T)
+par(mfrow = c(1,1))
+
+# zadanie 3
+attach(TitanicSurvival)
+dane <- table(survived, passengerClass)
+detach(TitanicSurvival)
+barplot(dane, width = 1,  beside = T, 
+        legend.text = TRUE,
+        args.legend = list(x = 9.5, y = max(dane), bty = "n")
+       )
+text(c(1.5, 2.5, 4.5, 5.5, 7.5, 8.5), c(dane)/2, labels = c(dane),
+     xpd = TRUE, col = 'white')
+
+
+```

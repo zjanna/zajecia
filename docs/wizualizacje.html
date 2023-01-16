@@ -9,9 +9,10 @@
 <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
+<meta name="author" content="Joanna Zyprych-Walczak" />
 
 
-<title>About</title>
+<title>Zajęcia z R</title>
 
 <script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -229,6 +233,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -236,6 +303,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -273,7 +350,10 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About</h1>
+<h1 class="title toc-ignore">Zajęcia z R</h1>
+<h3 class="subtitle">Wizualizacje</h3>
+<h4 class="author">Joanna Zyprych-Walczak</h4>
+<h4 class="date">20 Styczeń 2023</h4>
 
 </div>
 
@@ -281,7 +361,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +372,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -306,9 +386,9 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 6
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>prezentacja_2023/</code> <span
@@ -331,18 +411,105 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown is untracked by Git. To know which version of the R
+Markdown file created these results, you’ll want to first commit it to
+the Git repo. If you’re still working on the analysis, you can ignore
+this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongEnvironmentstrongempty">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Environment:</strong> empty </a>
+</p>
+</div>
+<div id="strongEnvironmentstrongempty" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! The global environment was empty. Objects defined in the
+global environment can affect the analysis in your R Markdown file in
+unknown ways. For reproduciblity it’s best to always run the code in an
+empty environment.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSeedstrongcodesetseed20230116code">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Seed:</strong>
+<code>set.seed(20230116)</code> </a>
+</p>
+</div>
+<div id="strongSeedstrongcodesetseed20230116code"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>The command <code>set.seed(20230116)</code> was run prior to running
+the code in the R Markdown file. Setting a seed ensures that any results
+that rely on randomness, e.g. subsampling or permutations, are
+reproducible.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongSessioninformationstrongrecorded">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Session information:</strong>
+recorded </a>
+</p>
+</div>
+<div id="strongSessioninformationstrongrecorded"
+class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Recording the operating system, R version, and package
+versions is critical for reproducibility.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongCachestrongnone">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>Cache:</strong> none </a>
+</p>
+</div>
+<div id="strongCachestrongnone" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Nice! There were no cached chunks for this analysis, so you can be
+confident that you successfully produced the results during this
+run.</p>
+</div>
+</div>
+</div>
+<div class="panel panel-default">
+<div class="panel-heading">
+<p class="panel-title">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongFilepathsstrongrelative">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>File paths:</strong> relative </a>
+</p>
+</div>
+<div id="strongFilepathsstrongrelative" class="panel-collapse collapse">
+<div class="panel-body">
+<p>Great job! Using relative paths to the files within your workflowr
+project makes it easier to run your code on other machines.</p>
 </div>
 </div>
 </div>
@@ -383,12 +550,12 @@ Ignored files:
     Ignored:    .Rhistory
 
 Untracked files:
+    Untracked:  analysis/wizualizacje.Rmd
+    Untracked:  analysis/wprowadzenie.Rmd
+    Untracked:  data/studenci.xlsx
     Untracked:  kod.R
     Untracked:  prezentacja_joanna.key
     Untracked:  prezentacje/
-    Untracked:  studenci.xlsx
-    Untracked:  wizualizacje.Rmd
-    Untracked:  wprowadzenie.Rmd
     Untracked:  zdjecia do prezentacji/
 
 Unstaged changes:
@@ -534,95 +701,132 @@ have uncommitted changes.
 <hr>
 </div>
 <div id="versions" class="tab-pane fade">
-
 <p>
-These are the previous versions of the repository in which changes were
-made to the R Markdown (<code>analysis/about.Rmd</code>) and HTML
-(<code>docs/about.html</code>) files. If you’ve configured a remote Git
-repository (see <code>?wflow_git_remote</code>), click on the hyperlinks
-in the table below to view the files as they were in that past version.
+There are no past versions. Publish this analysis with
+<code>wflow_publish()</code> to start tracking its development.
 </p>
-<div class="table-responsive">
-<table class="table table-condensed table-hover">
-<thead>
-<tr>
-<th>
-File
-</th>
-<th>
-Version
-</th>
-<th>
-Author
-</th>
-<th>
-Date
-</th>
-<th>
-Message
-</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-html
-</td>
-<td>
-90c0139
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-16
-</td>
-<td>
-Build site.
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-f539344
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-16
-</td>
-<td>
-Dodanie plików
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-e42ca6b
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-16
-</td>
-<td>
-Start workflowr project.
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <hr>
 </div>
 </div>
 </div>
-<p>Describe your project.</p>
+<p><strong>Wprowadzenie do ggplot2 - zadania</strong></p>
+<ol style="list-style-type: decimal">
+<li>Uruchom polecenie . Co widzisz?</li>
+<li>Wykonaj wykres punktowy zależności między zmiennymi i </li>
+<li>Co zobaczysz na wykresie punktowym zależności między zmiennymi i ?
+Dlaczego ten wykres jest bezużyteczny?</li>
+<li>Na podstawie danych z pakietu utwórz wykres punktowy opisujący
+zależność pomiędzy wagą urodzeniową dziecka, a ilością wizyt u lekarza w
+pierwszym trymestrze. Co możesz powiedzieć o tej zależności?</li>
+<li>Na podstawie danych stwórz zbiór danych w formacie long i nazwij go
+. Poszczególne zmienne nazwij jako: “grupa”, “id”, “marker”,
+“ekspresja”.6. Na podstawie danych dostępnych pod adresem stwórz zbiór
+danych w formacie long i nazwij go .</li>
+</ol>
+<p><strong>Wprowadzenie do ggplot2 - odpowiedzi</strong></p>
+<pre class="r"><code># zadanie 1
+set.seed(123)
+library(ggplot2)
+library(MASS)
+data(crabs)
+ggplot(data = crabs)</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-1-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 2
+ggplot(data = crabs) + geom_point(aes(CL, FL))</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-1-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 3
+ggplot(data = crabs) + geom_point(aes(sex, sp))</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-1-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 4
+data(birthwt)
+ggplot(data = birthwt) + geom_point(aes(lwt, bwt))</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-1-4.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 5
+library(reshape2)
+library(gap)</code></pre>
+<pre><code>&gt; Ładowanie wymaganego pakietu: gap.datasets</code></pre>
+<pre><code>&gt; gap version 1.3-1</code></pre>
+<pre class="r"><code>data(hla)
+hla.long &lt;- melt(hla, id.vars = c(&quot;id&quot;, &quot;y&quot;), variable.name = c(&quot;marker&quot;), value.name = &quot;ekspresja&quot;)
+colnames(hla.long)[1:2] &lt;- c(&quot;grupa&quot;, &quot;id&quot;)</code></pre>
+<p><strong>Mapowanie estetyk - zadania</strong></p>
+<ol style="list-style-type: decimal">
+<li><p>Dla wykresu z zadania 2 poprzedniej sekcji:</p>
+<ul>
+<li>dodaj kolory, które będą uzależnione od gatunku krabów;</li>
+<li>dodaj przezroczystość na poziomie 0.5 dla wszystkich punktów;</li>
+<li>dodaj kształty, które będą uzależnione od płci krabów.</li>
+</ul></li>
+<li><p>Na podstawie danych wykonaj wykres punktowy, który będzie
+pokazywał zależność pomiędzy markerami, a ekspresją. Dodaj do wykresu
+różne wielkości punktów w zależności od grupy. Czy wykres ten jest
+czytelny. Co możesz dodać/zmienić, aby był on bardziej
+przejrzysty?</p></li>
+<li><p>Dla wykresu z zadania 4 poprzedniej sekcji uwzględnij zmienne i
+korzystając z wybranych przez Ciebie estetyk.</p></li>
+<li><p>Na podstawie danych BodyTemp dostępnych pod adresem wykonaj
+wykres punktowy dla zmiennych HeartRate i Temperature z uwzględnieniem
+płci (zmienna Gender).</p></li>
+</ol>
+<pre class="r"><code># zadanie 1
+ggplot(data = crabs) + geom_point(aes(CL, FL, color = sp, shape = sex), alpha = 0.5)</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-2-1.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 2
+ggplot(data = hla.long) + geom_point(aes(marker, ekspresja, size = grupa))</code></pre>
+<pre><code>&gt; Warning: Using size for a discrete variable is not advised.</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-2-2.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code>ggplot(data = hla.long) + geom_point(aes(marker, ekspresja, color = grupa))</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-2-3.png" width="672" style="display: block; margin: auto;" /></p>
+<pre class="r"><code># zadanie 3
+birthwt$race &lt;- factor(birthwt$race, labels = c(&quot;white&quot;, &quot;black&quot;, &quot;other&quot;))
+birthwt$ht &lt;- factor(birthwt$ht, labels = c(&quot;no&quot;, &quot;yes&quot;))
+ggplot(data = birthwt) + geom_point(aes(lwt, bwt, color = race, alpha = ht))</code></pre>
+<pre><code>&gt; Warning: Using alpha for a discrete variable is not advised.</code></pre>
+<p><img src="figure/wizualizacje.Rmd/unnamed-chunk-2-4.png" width="672" style="display: block; margin: auto;" /></p>
+<br>
+<p>
+<button type="button" class="btn btn-default btn-workflowr btn-workflowr-sessioninfo" data-toggle="collapse" data-target="#workflowr-sessioninfo" style="display: block;">
+<span class="glyphicon glyphicon-wrench" aria-hidden="true"></span>
+Session information
+</button>
+</p>
+<div id="workflowr-sessioninfo" class="collapse">
+<pre class="r"><code>sessionInfo()</code></pre>
+<pre><code>&gt; R version 4.2.1 (2022-06-23)
+&gt; Platform: x86_64-apple-darwin17.0 (64-bit)
+&gt; Running under: macOS Big Sur ... 10.16
+&gt; 
+&gt; Matrix products: default
+&gt; BLAS:   /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRblas.0.dylib
+&gt; LAPACK: /Library/Frameworks/R.framework/Versions/4.2/Resources/lib/libRlapack.dylib
+&gt; 
+&gt; locale:
+&gt; [1] pl_PL.UTF-8/pl_PL.UTF-8/pl_PL.UTF-8/C/pl_PL.UTF-8/pl_PL.UTF-8
+&gt; 
+&gt; attached base packages:
+&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     
+&gt; 
+&gt; other attached packages:
+&gt; [1] gap_1.3-1          gap.datasets_0.0.5 reshape2_1.4.4     MASS_7.3-58.1     
+&gt; [5] ggplot2_3.4.0      knitr_1.40         workflowr_1.7.0   
+&gt; 
+&gt; loaded via a namespace (and not attached):
+&gt;  [1] tidyselect_1.2.0 xfun_0.34        bslib_0.4.1      colorspace_2.0-3
+&gt;  [5] vctrs_0.5.0      generics_0.1.3   htmltools_0.5.3  yaml_2.3.6      
+&gt;  [9] utf8_1.2.2       rlang_1.0.6      jquerylib_0.1.4  later_1.3.0     
+&gt; [13] pillar_1.8.1     glue_1.6.2       withr_2.5.0      DBI_1.1.3       
+&gt; [17] plyr_1.8.7       lifecycle_1.0.3  stringr_1.4.1    munsell_0.5.0   
+&gt; [21] gtable_0.3.1     evaluate_0.18    labeling_0.4.2   callr_3.7.3     
+&gt; [25] fastmap_1.1.0    httpuv_1.6.6     ps_1.7.2         fansi_1.0.3     
+&gt; [29] highr_0.9        Rcpp_1.0.9       promises_1.2.0.1 scales_1.2.1    
+&gt; [33] formatR_1.12     cachem_1.0.6     jsonlite_1.8.3   farver_2.1.1    
+&gt; [37] fs_1.5.2         digest_0.6.30    stringi_1.7.8    processx_3.8.0  
+&gt; [41] dplyr_1.0.10     getPass_0.2-2    rprojroot_2.0.3  grid_4.2.1      
+&gt; [45] cli_3.4.1        tools_4.2.1      magrittr_2.0.3   sass_0.4.2      
+&gt; [49] tibble_3.1.8     whisker_0.4      pkgconfig_2.0.3  assertthat_0.2.1
+&gt; [53] rmarkdown_2.18   httr_1.4.4       rstudioapi_0.14  R6_2.5.1        
+&gt; [57] git2r_0.30.1     compiler_4.2.1</code></pre>
+</div>
 
 
 <!-- Adjust MathJax settings so that all math formulae are shown using
@@ -640,6 +844,8 @@ footer is added to webpages before the MathJax javascript. -->
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -672,6 +878,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

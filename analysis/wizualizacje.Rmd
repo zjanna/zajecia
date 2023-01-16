@@ -1,0 +1,88 @@
+---
+title: "Zajęcia z R"
+author: "Joanna Zyprych-Walczak"
+date: "20 Styczeń 2023"
+output:
+  html_document:
+    df_print: paged
+  pdf_document: default
+subtitle: Wizualizacje
+---
+
+```{r setup, include=FALSE}
+library(knitr)
+opts_chunk$set(comment = '>')
+```
+
+**Wprowadzenie do ggplot2 - zadania**
+
+1. Uruchom polecenie \texttt{ggplot(data = crabs)}. Co widzisz?
+2. Wykonaj wykres punktowy zależności między zmiennymi \texttt{CL} i \texttt{FL.}
+3. Co zobaczysz na wykresie punktowym zależności między zmiennymi \texttt{sex} i \texttt{sp}? Dlaczego ten wykres jest bezużyteczny?
+4. Na podstawie danych \texttt{birthwt} z pakietu \texttt{MASS} utwórz wykres punktowy opisujący zależność pomiędzy wagą urodzeniową dziecka, a ilością wizyt u lekarza w pierwszym trymestrze. Co możesz powiedzieć o tej zależności?
+5. Na podstawie danych \texttt{hla} stwórz zbiór danych w formacie long i nazwij go \texttt{hla.long}. Poszczególne zmienne nazwij jako: "grupa", "id", "marker", "ekspresja".6. Na podstawie danych \texttt{Protain} dostępnych pod adresem \url{http://extras.springer.com/2012/978-1-4614-1302-8/Protein.txt} stwórz zbiór danych w formacie long i nazwij go \texttt{protain.long}.
+
+**Wprowadzenie do ggplot2 - odpowiedzi**
+
+```{r, tidy = T}
+# zadanie 1
+set.seed(123)
+library(ggplot2)
+library(MASS)
+data(crabs)
+ggplot(data = crabs)
+
+# zadanie 2
+ggplot(data = crabs) + geom_point(aes(CL, FL))
+
+# zadanie 3
+ggplot(data = crabs) + geom_point(aes(sex, sp))
+
+# zadanie 4
+data(birthwt)
+ggplot(data = birthwt) + geom_point(aes(lwt, bwt))
+
+# zadanie 5
+library(reshape2)
+library(gap)
+data(hla)
+hla.long <- melt(hla, id.vars = c('id', "y"), variable.name=c("marker"), 
+                 value.name = "ekspresja")
+colnames(hla.long)[1:2] <- c("grupa", "id")
+
+
+```
+
+**Mapowanie estetyk - zadania**
+
+1. Dla wykresu z zadania 2 poprzedniej sekcji:
+      - dodaj kolory, które będą uzależnione od gatunku krabów;
+      - dodaj przezroczystość na poziomie 0.5 dla wszystkich punktów;
+      - dodaj kształty, które będą uzależnione od płci krabów.
+
+2. Na podstawie danych \texttt{hla.long} wykonaj wykres punktowy, który będzie pokazywał zależność pomiędzy markerami, a ekspresją. Dodaj do wykresu różne wielkości punktów w zależności od grupy. Czy wykres ten jest czytelny. Co możesz dodać/zmienić, aby był on bardziej przejrzysty?
+
+3. Dla wykresu z zadania 4 poprzedniej sekcji uwzględnij zmienne \texttt{race} i \texttt{ht} korzystając z wybranych przez Ciebie estetyk.
+
+4. Na podstawie danych BodyTemp dostępnych pod adresem \url{http://extras.springer.com/2012/978-1-4614-1302-8/BodyTemperature.txt} wykonaj wykres punktowy dla zmiennych HeartRate i Temperature z uwzględnieniem płci (zmienna Gender).
+
+
+```{r, tidy=T, comment = '>'}
+# zadanie 1
+ggplot(data = crabs) + geom_point(aes(CL, FL, color = sp, shape = sex), 
+                                  alpha = 0.5)
+
+# zadanie 2
+ggplot(data = hla.long) + geom_point(aes(marker, ekspresja, size = grupa))
+ggplot(data = hla.long) + geom_point(aes(marker, ekspresja, color = grupa))
+
+# zadanie 3 
+birthwt$race <- factor(birthwt$race, labels = c("white", "black", "other"))
+birthwt$ht <- factor(birthwt$ht, labels = c("no", "yes"))
+ggplot(data = birthwt) + geom_point(aes(lwt, bwt, color = race, alpha = ht))
+
+
+```
+
+
+

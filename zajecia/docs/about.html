@@ -281,7 +281,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +292,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -306,9 +306,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>zajecia/</code> <span
@@ -331,36 +331,33 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatree93d1c6c754030858e61966689fe8184249bf3e07targetblank93d1c6ca">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatreee7649947f15e7ee02dc8920099794ff863e95269targetblanke764994a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/zjanna/zajecia/tree/93d1c6c754030858e61966689fe8184249bf3e07" target="_blank">93d1c6c</a>
+<a href="https://github.com/zjanna/zajecia/tree/e7649947f15e7ee02dc8920099794ff863e95269" target="_blank">e764994</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatree93d1c6c754030858e61966689fe8184249bf3e07targetblank93d1c6ca"
+id="strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatreee7649947f15e7ee02dc8920099794ff863e95269targetblanke764994a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -370,7 +367,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/zjanna/zajecia/tree/93d1c6c754030858e61966689fe8184249bf3e07" target="_blank">93d1c6c</a>.
+<a href="https://github.com/zjanna/zajecia/tree/e7649947f15e7ee02dc8920099794ff863e95269" target="_blank">e764994</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -407,7 +404,6 @@ Unstaged changes:
     Deleted:    docs/.nojekyll
     Deleted:    output/README.md
     Deleted:    prezentacja_2023.Rproj
-    Modified:   zajecia/analysis/about.Rmd
 
 </code></pre>
 <p>
@@ -453,6 +449,40 @@ Message
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/zjanna/zajecia/blob/e7649947f15e7ee02dc8920099794ff863e95269/zajecia/analysis/about.Rmd" target="_blank">e764994</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-16
+</td>
+<td>
+Zmiana treści strony
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/e7649947f15e7ee02dc8920099794ff863e95269/zajecia/docs/about.html" target="_blank">e764994</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-16
+</td>
+<td>
+Zmiana treści strony
+</td>
+</tr>
 <tr>
 <td>
 html

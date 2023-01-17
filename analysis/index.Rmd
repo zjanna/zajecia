@@ -13,4 +13,5 @@ editor_options:
 ## Zajęcia z programowania w R
 
 +[wizualizacje](wizualizacje.html)
+
 +[wprowadzenie](wprowadzenie.html)

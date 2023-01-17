@@ -1,4 +1,4 @@
-# zajecia
+# Warsztaty
 
 A [workflowr][] project.
 

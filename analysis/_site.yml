@@ -1,7 +1,7 @@
-name: "Zajęcia"
+name: "Warsztaty"
 output_dir: ../docs
 navbar:
-  title: "Zajęcia"
+  title: "Warsztaty"
   left:
   - text: Home
     href: index.html

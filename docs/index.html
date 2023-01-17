@@ -248,7 +248,7 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">Zajęcia</a>
+      <a class="navbar-brand" href="index.html">Warsztaty</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
@@ -281,7 +281,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +292,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -302,13 +302,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-16
+<strong>Last updated:</strong> 2023-01-17
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>prezentacja_2023/</code> <span
@@ -331,33 +331,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannaZajeciatreec53251eb04a854a4fbb93b89b816811af0d891bdtargetblankc53251ea">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannaZajeciatree2617261997edb06f19d4593103cf18641e797b2btargetblank2617261a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/zjanna/Zajecia/tree/c53251eb04a854a4fbb93b89b816811af0d891bd" target="_blank">c53251e</a>
+<a href="https://github.com/zjanna/Zajecia/tree/2617261997edb06f19d4593103cf18641e797b2b" target="_blank">2617261</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomzjannaZajeciatreec53251eb04a854a4fbb93b89b816811af0d891bdtargetblankc53251ea"
+id="strongRepositoryversionstrongahrefhttpsgithubcomzjannaZajeciatree2617261997edb06f19d4593103cf18641e797b2btargetblank2617261a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -367,7 +370,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/zjanna/Zajecia/tree/c53251eb04a854a4fbb93b89b816811af0d891bd" target="_blank">c53251e</a>.
+<a href="https://github.com/zjanna/Zajecia/tree/2617261997edb06f19d4593103cf18641e797b2b" target="_blank">2617261</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -406,6 +409,7 @@ Unstaged changes:
     Deleted:    Zajecia_R/data/README.md
     Deleted:    Zajecia_R/docs/.nojekyll
     Deleted:    Zajecia_R/output/README.md
+    Modified:   analysis/index.Rmd
     Deleted:    zajecia/.Rprofile
     Deleted:    zajecia/.gitattributes
     Deleted:    zajecia/.gitignore
@@ -569,6 +573,40 @@ Message
 Rmd
 </td>
 <td>
+<a href="https://github.com/zjanna/Zajecia/blob/2617261997edb06f19d4593103cf18641e797b2b/analysis/index.Rmd" target="_blank">2617261</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-17
+</td>
+<td>
+Start workflowr project.
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zjanna/Zajecia/205cd31a2fc932247d1cde498fa36c0173538a6e/docs/index.html" target="_blank">205cd31</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-16
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
 <a href="https://github.com/zjanna/Zajecia/blob/c53251eb04a854a4fbb93b89b816811af0d891bd/analysis/index.Rmd" target="_blank">c53251e</a>
 </td>
 <td>
@@ -711,11 +749,8 @@ Start workflowr project.
 <h1>Strona z zajęciami</h1>
 <div id="zajęcia-z-programowania-w-r" class="section level2">
 <h2>Zajęcia z programowania w R</h2>
-<div id="rok-2" class="section level3">
-<h3>ROK 2</h3>
 <p>+<a href="wizualizacje.html">wizualizacje</a> +<a
 href="wprowadzenie.html">wprowadzenie</a></p>
-</div>
 </div>
 </div>
 

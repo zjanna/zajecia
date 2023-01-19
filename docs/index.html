@@ -281,7 +281,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
+workflowr <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +292,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> </a>
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
+</a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -306,9 +306,9 @@ aria-hidden="true"></span> </a>
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 1
+aria-hidden="true"></span> 0
 </p>
 <p>
 <strong>Knit directory:</strong> <code>prezentacja_2023/</code> <span
@@ -331,36 +331,33 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
-<span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
-changes </a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
+<span class="glyphicon glyphicon-ok text-success"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
+</a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguncommittedchanges"
+<div id="strongRMarkdownfilestronguptodate"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>The R Markdown file has unstaged changes. To know which version of
-the R Markdown file created these results, you’ll want to first commit
-it to the Git repo. If you’re still working on the analysis, you can
-ignore this warning. When you’re finished, you can run
-<code>wflow_publish</code> to commit the R Markdown file and build the
-HTML.</p>
+<p>Great! Since the R Markdown file has been committed to the Git
+repository, you know the exact version of the code that produced these
+results.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomalicjaszabelskazajeciatree20de6f7273cd6595ea98e6c1edd3a3726081ec25targetblank20de6f7a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatreeeab98a78ce7710621b0dedafd24faf9407c0324dtargetblankeab98a7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/alicjaszabelska/zajecia/tree/20de6f7273cd6595ea98e6c1edd3a3726081ec25" target="_blank">20de6f7</a>
+<a href="https://github.com/zjanna/zajecia/tree/eab98a78ce7710621b0dedafd24faf9407c0324d" target="_blank">eab98a7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomalicjaszabelskazajeciatree20de6f7273cd6595ea98e6c1edd3a3726081ec25targetblank20de6f7a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomzjannazajeciatreeeab98a78ce7710621b0dedafd24faf9407c0324dtargetblankeab98a7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -370,7 +367,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/alicjaszabelska/zajecia/tree/20de6f7273cd6595ea98e6c1edd3a3726081ec25" target="_blank">20de6f7</a>.
+<a href="https://github.com/zjanna/zajecia/tree/eab98a78ce7710621b0dedafd24faf9407c0324d" target="_blank">eab98a7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -394,9 +391,6 @@ Untracked files:
     Untracked:  prezentacja_joanna.key
     Untracked:  prezentacje/
     Untracked:  zdjecia do prezentacji/
-
-Unstaged changes:
-    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -443,10 +437,44 @@ Message
 <tbody>
 <tr>
 <td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/zjanna/zajecia/blob/eab98a78ce7710621b0dedafd24faf9407c0324d/analysis/index.Rmd" target="_blank">eab98a7</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-19
+</td>
+<td>
+Dodanie plików
+</td>
+</tr>
+<tr>
+<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/20de6f7273cd6595ea98e6c1edd3a3726081ec25/docs/index.html" target="_blank">20de6f7</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/eab98a78ce7710621b0dedafd24faf9407c0324d/docs/index.html" target="_blank">eab98a7</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-19
+</td>
+<td>
+Dodanie plików
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/20de6f7273cd6595ea98e6c1edd3a3726081ec25/docs/index.html" target="_blank">20de6f7</a>
 </td>
 <td>
 zjanna
@@ -463,7 +491,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/aaea1b96060c0a3ec7a3165403cb4d851df5f002/analysis/index.Rmd" target="_blank">aaea1b9</a>
+<a href="https://github.com/zjanna/zajecia/blob/aaea1b96060c0a3ec7a3165403cb4d851df5f002/analysis/index.Rmd" target="_blank">aaea1b9</a>
 </td>
 <td>
 zjanna
@@ -480,7 +508,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/aaea1b96060c0a3ec7a3165403cb4d851df5f002/docs/index.html" target="_blank">aaea1b9</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/aaea1b96060c0a3ec7a3165403cb4d851df5f002/docs/index.html" target="_blank">aaea1b9</a>
 </td>
 <td>
 zjanna
@@ -497,7 +525,7 @@ Dodanie plików
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/9ffe86640365851a99dccc9b9184b6cac9c149fd/analysis/index.Rmd" target="_blank">9ffe866</a>
+<a href="https://github.com/zjanna/zajecia/blob/9ffe86640365851a99dccc9b9184b6cac9c149fd/analysis/index.Rmd" target="_blank">9ffe866</a>
 </td>
 <td>
 zjanna
@@ -514,7 +542,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/efedfe197e8a1b571c16c00ecdf1a7f7be5c2f03/docs/index.html" target="_blank">efedfe1</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/efedfe197e8a1b571c16c00ecdf1a7f7be5c2f03/docs/index.html" target="_blank">efedfe1</a>
 </td>
 <td>
 zjanna
@@ -531,7 +559,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/54fa42313a96a7aca92ad1fbdd747403202f8ed4/analysis/index.Rmd" target="_blank">54fa423</a>
+<a href="https://github.com/zjanna/zajecia/blob/54fa42313a96a7aca92ad1fbdd747403202f8ed4/analysis/index.Rmd" target="_blank">54fa423</a>
 </td>
 <td>
 zjanna
@@ -548,7 +576,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/54fa42313a96a7aca92ad1fbdd747403202f8ed4/docs/index.html" target="_blank">54fa423</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/54fa42313a96a7aca92ad1fbdd747403202f8ed4/docs/index.html" target="_blank">54fa423</a>
 </td>
 <td>
 zjanna
@@ -565,7 +593,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/5a69b217f45311f2e358351d5601de3c3aea2fe1/docs/index.html" target="_blank">5a69b21</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/5a69b217f45311f2e358351d5601de3c3aea2fe1/docs/index.html" target="_blank">5a69b21</a>
 </td>
 <td>
 zjanna
@@ -582,7 +610,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/3d766a283b79fa0486fbd5041e82fca3f33aed25/analysis/index.Rmd" target="_blank">3d766a2</a>
+<a href="https://github.com/zjanna/zajecia/blob/3d766a283b79fa0486fbd5041e82fca3f33aed25/analysis/index.Rmd" target="_blank">3d766a2</a>
 </td>
 <td>
 zjanna
@@ -599,7 +627,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/3d766a283b79fa0486fbd5041e82fca3f33aed25/docs/index.html" target="_blank">3d766a2</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/3d766a283b79fa0486fbd5041e82fca3f33aed25/docs/index.html" target="_blank">3d766a2</a>
 </td>
 <td>
 zjanna
@@ -616,7 +644,7 @@ Dodanie plików
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/2617261997edb06f19d4593103cf18641e797b2b/analysis/index.Rmd" target="_blank">2617261</a>
+<a href="https://github.com/zjanna/zajecia/blob/2617261997edb06f19d4593103cf18641e797b2b/analysis/index.Rmd" target="_blank">2617261</a>
 </td>
 <td>
 zjanna
@@ -633,7 +661,7 @@ Start workflowr project.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/205cd31a2fc932247d1cde498fa36c0173538a6e/docs/index.html" target="_blank">205cd31</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/205cd31a2fc932247d1cde498fa36c0173538a6e/docs/index.html" target="_blank">205cd31</a>
 </td>
 <td>
 zjanna
@@ -650,7 +678,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/c53251eb04a854a4fbb93b89b816811af0d891bd/analysis/index.Rmd" target="_blank">c53251e</a>
+<a href="https://github.com/zjanna/zajecia/blob/c53251eb04a854a4fbb93b89b816811af0d891bd/analysis/index.Rmd" target="_blank">c53251e</a>
 </td>
 <td>
 zjanna
@@ -667,7 +695,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/c53251eb04a854a4fbb93b89b816811af0d891bd/docs/index.html" target="_blank">c53251e</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/c53251eb04a854a4fbb93b89b816811af0d891bd/docs/index.html" target="_blank">c53251e</a>
 </td>
 <td>
 zjanna
@@ -684,7 +712,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/95c9d80478ff85ee9f51c05b5a6f79c0b0ca4fd2/docs/index.html" target="_blank">95c9d80</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/95c9d80478ff85ee9f51c05b5a6f79c0b0ca4fd2/docs/index.html" target="_blank">95c9d80</a>
 </td>
 <td>
 zjanna
@@ -701,7 +729,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/59c48a59e49a370fb5695a989792c3d9464348f4/analysis/index.Rmd" target="_blank">59c48a5</a>
+<a href="https://github.com/zjanna/zajecia/blob/59c48a59e49a370fb5695a989792c3d9464348f4/analysis/index.Rmd" target="_blank">59c48a5</a>
 </td>
 <td>
 zjanna
@@ -718,7 +746,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/59c48a59e49a370fb5695a989792c3d9464348f4/docs/index.html" target="_blank">59c48a5</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/59c48a59e49a370fb5695a989792c3d9464348f4/docs/index.html" target="_blank">59c48a5</a>
 </td>
 <td>
 zjanna
@@ -735,7 +763,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/90c01391ae9e2d631dc7510b162d55a279c34842/docs/index.html" target="_blank">90c0139</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/90c01391ae9e2d631dc7510b162d55a279c34842/docs/index.html" target="_blank">90c0139</a>
 </td>
 <td>
 zjanna
@@ -752,7 +780,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/f539344cafdd8ee3e1dcfaa37da1f40443165682/docs/index.html" target="_blank">f539344</a>
+<a href="https://rawcdn.githack.com/zjanna/zajecia/f539344cafdd8ee3e1dcfaa37da1f40443165682/docs/index.html" target="_blank">f539344</a>
 </td>
 <td>
 zjanna
@@ -769,7 +797,7 @@ Dodanie plików
 Rmd
 </td>
 <td>
-<a href="https://github.com/alicjaszabelska/zajecia/blob/e42ca6bf0bfb13c505ace6769c3cb872c4f11633/analysis/index.Rmd" target="_blank">e42ca6b</a>
+<a href="https://github.com/zjanna/zajecia/blob/e42ca6bf0bfb13c505ace6769c3cb872c4f11633/analysis/index.Rmd" target="_blank">e42ca6b</a>
 </td>
 <td>
 zjanna

@@ -1,4 +1,4 @@
-# Warsztaty
+# warsztaty
 
 A [workflowr][] project.
 

@@ -11,7 +11,7 @@
 
 
 
-<title>Home</title>
+<title>Zajęcia</title>
 
 <script src="site_libs/header-attrs-2.18/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -273,7 +273,7 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Home</h1>
+<h1 class="title toc-ignore">Zajęcia</h1>
 
 </div>
 
@@ -281,7 +281,7 @@ $(document).ready(function () {
 <p>
 <button type="button" class="btn btn-default btn-workflowr btn-workflowr-report" data-toggle="collapse" data-target="#workflowr-report">
 <span class="glyphicon glyphicon-list" aria-hidden="true"></span>
-workflowr <span class="glyphicon glyphicon-ok text-success"
+workflowr <span class="glyphicon glyphicon-exclamation-sign text-danger"
 aria-hidden="true"></span>
 </button>
 </p>
@@ -292,8 +292,8 @@ aria-hidden="true"></span>
 </li>
 <li>
 <a data-toggle="tab" href="#checks"> Checks <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
-</a>
+class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> </a>
 </li>
 <li>
 <a data-toggle="tab" href="#versions">Past versions</a>
@@ -302,13 +302,13 @@ class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span>
 <div class="tab-content">
 <div id="summary" class="tab-pane fade in active">
 <p>
-<strong>Last updated:</strong> 2023-01-17
+<strong>Last updated:</strong> 2023-01-19
 </p>
 <p>
 <strong>Checks:</strong> <span
-class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 2
+class="glyphicon glyphicon-ok text-success" aria-hidden="true"></span> 1
 <span class="glyphicon glyphicon-exclamation-sign text-danger"
-aria-hidden="true"></span> 0
+aria-hidden="true"></span> 1
 </p>
 <p>
 <strong>Knit directory:</strong> <code>prezentacja_2023/</code> <span
@@ -331,33 +331,36 @@ versions</em> tab lists the development history.
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguptodate">
-<span class="glyphicon glyphicon-ok text-success"
-aria-hidden="true"></span> <strong>R Markdown file:</strong> up-to-date
-</a>
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRMarkdownfilestronguncommittedchanges">
+<span class="glyphicon glyphicon-exclamation-sign text-danger"
+aria-hidden="true"></span> <strong>R Markdown file:</strong> uncommitted
+changes </a>
 </p>
 </div>
-<div id="strongRMarkdownfilestronguptodate"
+<div id="strongRMarkdownfilestronguncommittedchanges"
 class="panel-collapse collapse">
 <div class="panel-body">
-<p>Great! Since the R Markdown file has been committed to the Git
-repository, you know the exact version of the code that produced these
-results.</p>
+<p>The R Markdown file has unstaged changes. To know which version of
+the R Markdown file created these results, you’ll want to first commit
+it to the Git repo. If you’re still working on the analysis, you can
+ignore this warning. When you’re finished, you can run
+<code>wflow_publish</code> to commit the R Markdown file and build the
+HTML.</p>
 </div>
 </div>
 </div>
 <div class="panel panel-default">
 <div class="panel-heading">
 <p class="panel-title">
-<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomzjannacostreeaaea1b96060c0a3ec7a3165403cb4d851df5f002targetblankaaea1b9a">
+<a data-toggle="collapse" data-parent="#workflowr-checks" href="#strongRepositoryversionstrongahrefhttpsgithubcomalicjaszabelskazajeciatree20de6f7273cd6595ea98e6c1edd3a3726081ec25targetblank20de6f7a">
 <span class="glyphicon glyphicon-ok text-success"
 aria-hidden="true"></span> <strong>Repository version:</strong>
-<a href="https://github.com/zjanna/cos/tree/aaea1b96060c0a3ec7a3165403cb4d851df5f002" target="_blank">aaea1b9</a>
+<a href="https://github.com/alicjaszabelska/zajecia/tree/20de6f7273cd6595ea98e6c1edd3a3726081ec25" target="_blank">20de6f7</a>
 </a>
 </p>
 </div>
 <div
-id="strongRepositoryversionstrongahrefhttpsgithubcomzjannacostreeaaea1b96060c0a3ec7a3165403cb4d851df5f002targetblankaaea1b9a"
+id="strongRepositoryversionstrongahrefhttpsgithubcomalicjaszabelskazajeciatree20de6f7273cd6595ea98e6c1edd3a3726081ec25targetblank20de6f7a"
 class="panel-collapse collapse">
 <div class="panel-body">
 <p>
@@ -367,7 +370,7 @@ reproducibility.
 </p>
 <p>
 The results in this page were generated with repository version
-<a href="https://github.com/zjanna/cos/tree/aaea1b96060c0a3ec7a3165403cb4d851df5f002" target="_blank">aaea1b9</a>.
+<a href="https://github.com/alicjaszabelska/zajecia/tree/20de6f7273cd6595ea98e6c1edd3a3726081ec25" target="_blank">20de6f7</a>.
 See the <em>Past versions</em> tab to see a history of the changes made
 to the R Markdown and HTML files.
 </p>
@@ -391,6 +394,9 @@ Untracked files:
     Untracked:  prezentacja_joanna.key
     Untracked:  prezentacje/
     Untracked:  zdjecia do prezentacji/
+
+Unstaged changes:
+    Modified:   analysis/index.Rmd
 
 </code></pre>
 <p>
@@ -437,61 +443,10 @@ Message
 <tbody>
 <tr>
 <td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/zjanna/cos/blob/aaea1b96060c0a3ec7a3165403cb4d851df5f002/analysis/index.Rmd" target="_blank">aaea1b9</a>
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-17
-</td>
-<td>
-Dodanie plików
-</td>
-</tr>
-<tr>
-<td>
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/aaea1b96060c0a3ec7a3165403cb4d851df5f002/docs/index.html" target="_blank">aaea1b9</a>
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-17
-</td>
-<td>
-Dodanie plików
-</td>
-</tr>
-<tr>
-<td>
-Rmd
-</td>
-<td>
-<a href="https://github.com/zjanna/cos/blob/9ffe86640365851a99dccc9b9184b6cac9c149fd/analysis/index.Rmd" target="_blank">9ffe866</a>
-</td>
-<td>
-zjanna
-</td>
-<td>
-2023-01-17
-</td>
-<td>
-Dodanie plików
-</td>
-</tr>
-<tr>
-<td>
-html
-</td>
-<td>
-<a href="https://rawcdn.githack.com/zjanna/cos/efedfe197e8a1b571c16c00ecdf1a7f7be5c2f03/docs/index.html" target="_blank">efedfe1</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/20de6f7273cd6595ea98e6c1edd3a3726081ec25/docs/index.html" target="_blank">20de6f7</a>
 </td>
 <td>
 zjanna
@@ -508,7 +463,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/54fa42313a96a7aca92ad1fbdd747403202f8ed4/analysis/index.Rmd" target="_blank">54fa423</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/aaea1b96060c0a3ec7a3165403cb4d851df5f002/analysis/index.Rmd" target="_blank">aaea1b9</a>
 </td>
 <td>
 zjanna
@@ -525,7 +480,24 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/54fa42313a96a7aca92ad1fbdd747403202f8ed4/docs/index.html" target="_blank">54fa423</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/aaea1b96060c0a3ec7a3165403cb4d851df5f002/docs/index.html" target="_blank">aaea1b9</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-17
+</td>
+<td>
+Dodanie plików
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/9ffe86640365851a99dccc9b9184b6cac9c149fd/analysis/index.Rmd" target="_blank">9ffe866</a>
 </td>
 <td>
 zjanna
@@ -542,7 +514,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/5a69b217f45311f2e358351d5601de3c3aea2fe1/docs/index.html" target="_blank">5a69b21</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/efedfe197e8a1b571c16c00ecdf1a7f7be5c2f03/docs/index.html" target="_blank">efedfe1</a>
 </td>
 <td>
 zjanna
@@ -559,7 +531,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/3d766a283b79fa0486fbd5041e82fca3f33aed25/analysis/index.Rmd" target="_blank">3d766a2</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/54fa42313a96a7aca92ad1fbdd747403202f8ed4/analysis/index.Rmd" target="_blank">54fa423</a>
 </td>
 <td>
 zjanna
@@ -576,7 +548,58 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/3d766a283b79fa0486fbd5041e82fca3f33aed25/docs/index.html" target="_blank">3d766a2</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/54fa42313a96a7aca92ad1fbdd747403202f8ed4/docs/index.html" target="_blank">54fa423</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-17
+</td>
+<td>
+Dodanie plików
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/5a69b217f45311f2e358351d5601de3c3aea2fe1/docs/index.html" target="_blank">5a69b21</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-17
+</td>
+<td>
+Build site.
+</td>
+</tr>
+<tr>
+<td>
+Rmd
+</td>
+<td>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/3d766a283b79fa0486fbd5041e82fca3f33aed25/analysis/index.Rmd" target="_blank">3d766a2</a>
+</td>
+<td>
+zjanna
+</td>
+<td>
+2023-01-17
+</td>
+<td>
+Dodanie plików
+</td>
+</tr>
+<tr>
+<td>
+html
+</td>
+<td>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/3d766a283b79fa0486fbd5041e82fca3f33aed25/docs/index.html" target="_blank">3d766a2</a>
 </td>
 <td>
 zjanna
@@ -593,7 +616,7 @@ Dodanie plików
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/2617261997edb06f19d4593103cf18641e797b2b/analysis/index.Rmd" target="_blank">2617261</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/2617261997edb06f19d4593103cf18641e797b2b/analysis/index.Rmd" target="_blank">2617261</a>
 </td>
 <td>
 zjanna
@@ -610,7 +633,7 @@ Start workflowr project.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/205cd31a2fc932247d1cde498fa36c0173538a6e/docs/index.html" target="_blank">205cd31</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/205cd31a2fc932247d1cde498fa36c0173538a6e/docs/index.html" target="_blank">205cd31</a>
 </td>
 <td>
 zjanna
@@ -627,7 +650,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/c53251eb04a854a4fbb93b89b816811af0d891bd/analysis/index.Rmd" target="_blank">c53251e</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/c53251eb04a854a4fbb93b89b816811af0d891bd/analysis/index.Rmd" target="_blank">c53251e</a>
 </td>
 <td>
 zjanna
@@ -644,7 +667,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/c53251eb04a854a4fbb93b89b816811af0d891bd/docs/index.html" target="_blank">c53251e</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/c53251eb04a854a4fbb93b89b816811af0d891bd/docs/index.html" target="_blank">c53251e</a>
 </td>
 <td>
 zjanna
@@ -661,7 +684,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/95c9d80478ff85ee9f51c05b5a6f79c0b0ca4fd2/docs/index.html" target="_blank">95c9d80</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/95c9d80478ff85ee9f51c05b5a6f79c0b0ca4fd2/docs/index.html" target="_blank">95c9d80</a>
 </td>
 <td>
 zjanna
@@ -678,7 +701,7 @@ Build site.
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/59c48a59e49a370fb5695a989792c3d9464348f4/analysis/index.Rmd" target="_blank">59c48a5</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/59c48a59e49a370fb5695a989792c3d9464348f4/analysis/index.Rmd" target="_blank">59c48a5</a>
 </td>
 <td>
 zjanna
@@ -695,7 +718,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/59c48a59e49a370fb5695a989792c3d9464348f4/docs/index.html" target="_blank">59c48a5</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/59c48a59e49a370fb5695a989792c3d9464348f4/docs/index.html" target="_blank">59c48a5</a>
 </td>
 <td>
 zjanna
@@ -712,7 +735,7 @@ Dodanie plików
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/90c01391ae9e2d631dc7510b162d55a279c34842/docs/index.html" target="_blank">90c0139</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/90c01391ae9e2d631dc7510b162d55a279c34842/docs/index.html" target="_blank">90c0139</a>
 </td>
 <td>
 zjanna
@@ -729,7 +752,7 @@ Build site.
 html
 </td>
 <td>
-<a href="https://rawcdn.githack.com/zjanna/cos/f539344cafdd8ee3e1dcfaa37da1f40443165682/docs/index.html" target="_blank">f539344</a>
+<a href="https://rawcdn.githack.com/alicjaszabelska/zajecia/f539344cafdd8ee3e1dcfaa37da1f40443165682/docs/index.html" target="_blank">f539344</a>
 </td>
 <td>
 zjanna
@@ -746,7 +769,7 @@ Dodanie plików
 Rmd
 </td>
 <td>
-<a href="https://github.com/zjanna/cos/blob/e42ca6bf0bfb13c505ace6769c3cb872c4f11633/analysis/index.Rmd" target="_blank">e42ca6b</a>
+<a href="https://github.com/alicjaszabelska/zajecia/blob/e42ca6bf0bfb13c505ace6769c3cb872c4f11633/analysis/index.Rmd" target="_blank">e42ca6b</a>
 </td>
 <td>
 zjanna
@@ -769,11 +792,8 @@ Start workflowr project.
 <h1>Strona z zajęciami</h1>
 <div id="zajęcia-z-programowania-w-r" class="section level2">
 <h2>Zajęcia z programowania w R</h2>
-<div id="może-coś-jeszcze" class="section level3">
-<h3>MOże coś jeszcze</h3>
 <p>+<a href="wizualizacje.html">wizualizacje</a></p>
 <p>+<a href="wprowadzenie.html">wprowadzenie</a></p>
-</div>
 </div>
 </div>
 

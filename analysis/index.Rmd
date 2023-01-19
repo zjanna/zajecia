@@ -9,6 +9,9 @@ editor_options:
 ---
 
 # Strona z zajęciami
+
 ## Zajęcia z programowania w R
- +[wizualizacje](wizualizacje.html)
- +[wprowadzenie](wprowadzenie.html)
+
+ - [wizualizacje](wizualizacje.html)
+ 
+ - [wprowadzenie](wprowadzenie.html)

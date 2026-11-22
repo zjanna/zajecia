@@ -1,0 +1,17 @@
+name: "zajecia_20.11"
+output_dir: ../docs
+navbar:
+  title: "zajecia_20.11"
+  left:
+  - text: Home
+    href: index.html
+  - text: About
+    href: about.html
+  - text: License
+    href: license.html
+output:
+  workflowr::wflow_html:
+    toc: yes
+    toc_float: yes
+    theme: cosmo
+    highlight: textmate
